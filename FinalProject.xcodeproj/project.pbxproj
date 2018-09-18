@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		039FB2722151953B005A549C /* uploadHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039FB2712151953B005A549C /* uploadHomeViewController.swift */; };
+		039FB2742151953B005A549C /* uploadPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039FB2732151953B005A549C /* uploadPhotosViewController.swift */; };
 		4CEC9C48E5F664737F43813D /* Pods_Login_RegisterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B5E92056FE5E06DEB0FC38 /* Pods_Login_RegisterTests.framework */; };
 		502139A12097979B003EFEE1 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5021399F2097979B003EFEE1 /* DataModel.xcdatamodeld */; };
 		5033779A208E5E0100A674C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50337799208E5E0100A674C9 /* AppDelegate.swift */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		039FB2712151953B005A549C /* uploadHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadHomeViewController.swift; sourceTree = "<group>"; };
+		039FB2732151953B005A549C /* uploadPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadPhotosViewController.swift; sourceTree = "<group>"; };
 		31E959A29F59DC3CD1E1531A /* Pods-Login_RegisterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login_RegisterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Login_RegisterTests/Pods-Login_RegisterTests.release.xcconfig"; sourceTree = "<group>"; };
 		4021D393B18581735AB9C560 /* Pods-Login_RegisterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login_RegisterUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Login_RegisterUITests/Pods-Login_RegisterUITests.release.xcconfig"; sourceTree = "<group>"; };
 		502139A02097979B003EFEE1 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -101,6 +105,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		039FB2702151953B005A549C /* UploadHome */ = {
+			isa = PBXGroup;
+			children = (
+				039FB2712151953B005A549C /* uploadHomeViewController.swift */,
+				039FB2732151953B005A549C /* uploadPhotosViewController.swift */,
+			);
+			path = UploadHome;
+			sourceTree = "<group>";
+		};
 		5033778D208E5E0100A674C9 = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +139,7 @@
 		50337798208E5E0100A674C9 /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				039FB2702151953B005A549C /* UploadHome */,
 				5039070820BE994900488512 /* Models */,
 				50337799208E5E0100A674C9 /* AppDelegate.swift */,
 				5033779B208E5E0100A674C9 /* ViewController.swift */,
@@ -418,6 +432,8 @@
 				502139A12097979B003EFEE1 /* DataModel.xcdatamodeld in Sources */,
 				50F35C232093113300B1CFB4 /* HomePageViewController.swift in Sources */,
 				5039070520BE991800488512 /* databaseModel.swift in Sources */,
+				039FB2722151953B005A549C /* uploadHomeViewController.swift in Sources */,
+				039FB2742151953B005A549C /* uploadPhotosViewController.swift in Sources */,
 				50F35C1F2092F82E00B1CFB4 /* SignInViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,7 +606,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8WQX23VQ48;
+				DEVELOPMENT_TEAM = H4AAP2S4X7;
 				INFOPLIST_FILE = FinalProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rocco.FinalProject;
@@ -606,7 +622,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8WQX23VQ48;
+				DEVELOPMENT_TEAM = H4AAP2S4X7;
 				INFOPLIST_FILE = FinalProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rocco.FinalProject;
