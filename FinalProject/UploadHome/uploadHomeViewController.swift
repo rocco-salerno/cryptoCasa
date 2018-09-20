@@ -15,6 +15,7 @@ class uploadHomeViewController: UIViewController {
     @IBOutlet weak var phoneNumberLabel: UITextField!
     @IBOutlet weak var homeTypeOutlet: UIPickerView!
     
+    let homeTypes = ["Ranch", "Split Level", "Victorian","Condo", "Duplex", "Penthouse"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,15 +28,12 @@ class uploadHomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func checkFields() {
+        if (nameLabel.text != nil && addressLabel.text != nil && phoneNumberLabel.text != nil)
+        {
+            
+        }
     }
-    */
+    
 
 }
