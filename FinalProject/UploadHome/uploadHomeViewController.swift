@@ -10,6 +10,12 @@ import UIKit
 
 class uploadHomeViewController: UIViewController {
 
+    @IBOutlet weak var nameLabel: UITextField!
+    @IBOutlet weak var addressLabel: UITextField!
+    @IBOutlet weak var phoneNumberLabel: UITextField!
+    @IBOutlet weak var homeTypeOutlet: UIPickerView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
