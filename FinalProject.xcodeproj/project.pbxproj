@@ -143,13 +143,13 @@
 				5039070820BE994900488512 /* Models */,
 				50337799208E5E0100A674C9 /* AppDelegate.swift */,
 				5033779B208E5E0100A674C9 /* ViewController.swift */,
-				5033779D208E5E0100A674C9 /* Main.storyboard */,
 				503377A0208E5E0100A674C9 /* Assets.xcassets */,
 				503377A2208E5E0100A674C9 /* LaunchScreen.storyboard */,
 				503377A5208E5E0100A674C9 /* Info.plist */,
 				50F35C1E2092F82E00B1CFB4 /* SignInViewController.swift */,
 				50F35C202092FD3800B1CFB4 /* SignUpViewController.swift */,
 				50F35C222093113300B1CFB4 /* HomePageViewController.swift */,
+				5033779D208E5E0100A674C9 /* Main.storyboard */,
 				50C0820920B7D0CC001D3BD9 /* GoogleService-Info.plist */,
 				5021399F2097979B003EFEE1 /* DataModel.xcdatamodeld */,
 			);
@@ -606,8 +606,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H4AAP2S4X7;
+				DEVELOPMENT_TEAM = 8WQX23VQ48;
 				INFOPLIST_FILE = FinalProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rocco.FinalProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -622,8 +623,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H4AAP2S4X7;
+				DEVELOPMENT_TEAM = 8WQX23VQ48;
 				INFOPLIST_FILE = FinalProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rocco.FinalProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
