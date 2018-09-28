@@ -52,7 +52,7 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func continueToPhotosBtn(_ sender: UIButton) {
         
-        if(nameLabel.text == nil || addressLabel.text == nil || cityLabel.text == nil || stateLabel.text == nil || zipcodeLabel.text == nil || homeTypeFromPicker.text == nil)
+        if(nameLabel.text != nil && addressLabel.text != nil && cityLabel.text != nil && stateLabel.text != nil && zipcodeLabel.text != nil && homeTypeFromPicker.text != nil)
         {
             firebaseReference?.child("Customers").childByAutoId().setValue(["Name": nameLabel.text,"Address": addressLabel.text,"City": cityLabel.text,"State": stateLabel.text,"Zipcode": zipcodeLabel.text, "PhoneNumber": phoneNumberLabel.text,"HouseType": homeTypeFromPicker.text])
             
