@@ -7,21 +7,34 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import Firebase
 
 class uploadPhotosViewController: UIViewController,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    var firebaseReference:DatabaseReference?
+    
     let imagePicker = UIImagePickerController()
+
+    @IBOutlet weak var testName: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        
+        firebaseReference = Database.database().reference()
+        testName?.text = name
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func BackToUploadHomeBtn(_ sender: UIButton) {
+        performSegue(withIdentifier: "BackToUploadHome", sender: self)
+    }
+    
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -37,5 +50,12 @@ class uploadPhotosViewController: UIViewController,UINavigationControllerDelegat
         
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func toHomeDetails(_ sender: UIButton) {
+        
+        let toDetailsPage = self.storyboard?.instantiateViewController(withIdentifier: "homeDetailsPage") as! HomeDetailsViewController
+        self.present(toDetailsPage, animated: true)
+    }
+    
 
 }

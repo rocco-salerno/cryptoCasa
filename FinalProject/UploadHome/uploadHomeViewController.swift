@@ -19,6 +19,15 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var stateLabel: UITextField!
     @IBOutlet weak var zipcodeLabel: UITextField!
     
+    var name: String = ""
+    var address: String = ""
+    var phonenumber: String = ""
+    var city: String = ""
+    var state: String = ""
+    var zipcode: String = ""
+    var hometype: String = ""
+    
+    
     @IBOutlet weak var homeTypeOutlet: UIPickerView!
     @IBOutlet weak var homeTypeFromPicker: UITextField!
     
@@ -38,6 +47,10 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
         homeTypeOutlet.delegate = self
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -50,14 +63,26 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
             self.present(backToHome, animated: true)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is HomeDetailsViewController
+        {
+            let vc = segue.destination as? HomeDetailsViewController
+            vc?.name = nameLabel.text!
+            vc?.address = addressLabel.text!
+            vc?.state = stateLabel.text!
+            vc?.zipcode = zipcodeLabel.text!
+            vc?.phonenumber = phoneNumberLabel.text!
+            vc?.hometype = homeTypeFromPicker.text!
+        }
+    }
+    
     @IBAction func continueToPhotosBtn(_ sender: UIButton) {
         
-        if(nameLabel.text != nil && addressLabel.text != nil && cityLabel.text != nil && stateLabel.text != nil && zipcodeLabel.text != nil && homeTypeFromPicker.text != nil)
+        if(nameLabel.text != nil && addressLabel.text != nil && cityLabel.text != nil && stateLabel.text != nil && zipcodeLabel.text != nil && phoneNumberLabel.text != nil && homeTypeFromPicker.text != nil)
         {
-            firebaseReference?.child("Customers").childByAutoId().setValue(["Name": nameLabel.text,"Address": addressLabel.text,"City": cityLabel.text,"State": stateLabel.text,"Zipcode": zipcodeLabel.text, "PhoneNumber": phoneNumberLabel.text,"HouseType": homeTypeFromPicker.text])
-            
-            let toPhotoUpload = self.storyboard?.instantiateViewController(withIdentifier: "uploadPhotosView") as! uploadPhotosViewController
-            self.present(toPhotoUpload, animated: true)
+            name = nameLabel.text!
+            performSegue(withIdentifier: "PresentPhotosPage", sender: self)
         }
         else{
              let alert = UIAlertController(title: "Whoops!", message: "You are missing fields.", preferredStyle: UIAlertControllerStyle.alert)
@@ -67,12 +92,12 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
-    /////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return true
     }
-   //////////////////////////////////////////////////////////
+   ////////////////////////////////////////////////////////////////////////////////////////////
 
 }
 
