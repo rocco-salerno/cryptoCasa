@@ -10,8 +10,9 @@ import UIKit
 import FirebaseDatabase
 
 class uploadHomeViewController: UIViewController, UITextFieldDelegate {
-
+    var key:String = ""
     var firebaseReference:DatabaseReference?
+    
     @IBOutlet weak var nameLabel: UITextField!
     @IBOutlet weak var addressLabel: UITextField!
     @IBOutlet weak var phoneNumberLabel: UITextField!
@@ -35,7 +36,7 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        firebaseReference = Database.database().reference()
+        firebaseReference = Database.database().reference().child("Customers")
         
         self.nameLabel.delegate = self
         self.addressLabel.delegate = self
@@ -65,32 +66,16 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if segue.destination is HomeDetailsViewController
+        if segue.destination is uploadPhotosViewController
         {
-            let vc = segue.destination as? HomeDetailsViewController
-            vc?.name = nameLabel.text!
-            vc?.address = addressLabel.text!
-            vc?.state = stateLabel.text!
-            vc?.zipcode = zipcodeLabel.text!
-            vc?.phonenumber = phoneNumberLabel.text!
-            vc?.hometype = homeTypeFromPicker.text!
+            let vc = segue.destination as? uploadPhotosViewController
+            vc?.key = key
         }
     }
     
     @IBAction func continueToPhotosBtn(_ sender: UIButton) {
-        
-        if(nameLabel.text != nil && addressLabel.text != nil && cityLabel.text != nil && stateLabel.text != nil && zipcodeLabel.text != nil && phoneNumberLabel.text != nil && homeTypeFromPicker.text != nil)
-        {
-            name = nameLabel.text!
+            addCustomerInfo()
             performSegue(withIdentifier: "PresentPhotosPage", sender: self)
-        }
-        else{
-             let alert = UIAlertController(title: "Whoops!", message: "You are missing fields.", preferredStyle: UIAlertControllerStyle.alert)
-            
-            alert.addAction(UIAlertAction(title:"Okay", style: .default, handler:  { action in self.performSegue(withIdentifier: "HomeUploadViewController", sender: self)}))
-            self.present(alert,animated: true, completion: nil)
-        }
-        
     }
     ///////////////////////////////////////////////////////////////////////////////////////////
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -99,6 +84,31 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
     }
    ////////////////////////////////////////////////////////////////////////////////////////////
 
+    func addCustomerInfo()
+    {
+        key = (firebaseReference?.childByAutoId().key)!
+        
+        if(nameLabel.text != nil && addressLabel.text != nil && cityLabel.text != nil && stateLabel.text != nil && zipcodeLabel.text != nil && phoneNumberLabel.text != nil && homeTypeFromPicker.text != nil)
+        {
+            let customer = ["ID": key,
+                        "Name": nameLabel.text!,
+                        "Address": addressLabel.text!,
+                        "City": cityLabel.text!,
+                        "State": stateLabel.text!,
+                        "Zipcode":zipcodeLabel.text!,
+                        "PhoneNumber": phoneNumberLabel.text!,
+                        "Hometype": homeTypeFromPicker.text!]
+            firebaseReference!.child(key).setValue(customer)
+        }
+        else{
+            let alert = UIAlertController(title: "Whoops!", message: "You are missing fields.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title:"Okay", style: .default, handler:  { action in self.performSegue(withIdentifier: "HomeUploadViewController", sender: self)}))
+            self.present(alert,animated: true, completion: nil)
+        }
+        
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////
 }
 
 

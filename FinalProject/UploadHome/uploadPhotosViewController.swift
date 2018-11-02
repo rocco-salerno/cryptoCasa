@@ -10,20 +10,19 @@ import UIKit
 import FirebaseDatabase
 import Firebase
 
-class uploadPhotosViewController: UIViewController,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class uploadPhotosViewController: UIViewController {
+    
     
     var firebaseReference:DatabaseReference?
+    var key:String = ""
     
     let imagePicker = UIImagePickerController()
-
-    @IBOutlet weak var testName: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
         firebaseReference = Database.database().reference()
-        testName?.text = name
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,17 +44,51 @@ class uploadPhotosViewController: UIViewController,UINavigationControllerDelegat
         self.present(imagePicker, animated: true, completion: nil)
     }
     
+    //move to the Home Details View page
+    @IBAction func toHomeDetails(_ sender: UIButton) {
+      performSegue(withIdentifier: "PresentDetailsPage", sender: self)
+    }
+    
+    //send key value to HomeDetailsViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is HomeDetailsViewController
+        {
+            let vc = segue.destination as? HomeDetailsViewController
+            vc?.key = key
+        }
+    }
+    
+    //upload image to firebase function
+    func uploadImageToFirebase(data: NSData)
+    {
+        //reference to location where photos will be stored
+        let storageReference = Storage.storage().reference(withPath: "Customer_Photos/\(key).jpg")
+        //upload files to firebase
+        let uploadMetadata = StorageMetadata()
+        uploadMetadata.contentType = "image/jpeg"
+        storageReference.putData(data as Data, metadata: uploadMetadata)
+    }
+
+}//end uploadPhotoViewController
+
+
+extension uploadPhotosViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func  imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }//ImagePickerCancel function
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        
         imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func toHomeDetails(_ sender: UIButton) {
+        let imageData = UIImageJPEGRepresentation(image!, 0.8)
+        uploadImageToFirebase(data: imageData as! NSData)
         
-        let toDetailsPage = self.storyboard?.instantiateViewController(withIdentifier: "homeDetailsPage") as! HomeDetailsViewController
-        self.present(toDetailsPage, animated: true)
-    }
-    
-
+        self.dismiss(animated: true, completion: nil)
+        
+        
+    }//imagePickerController
 }

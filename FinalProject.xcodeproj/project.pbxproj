@@ -144,19 +144,18 @@
 		50337798208E5E0100A674C9 /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				50FA05AA2188F242001C58F8 /* LoggingIn */,
 				039FB2702151953B005A549C /* UploadHome */,
 				5039070820BE994900488512 /* Models */,
-				50337799208E5E0100A674C9 /* AppDelegate.swift */,
 				5033779B208E5E0100A674C9 /* ViewController.swift */,
-				503377A0208E5E0100A674C9 /* Assets.xcassets */,
-				503377A2208E5E0100A674C9 /* LaunchScreen.storyboard */,
-				503377A5208E5E0100A674C9 /* Info.plist */,
-				50F35C1E2092F82E00B1CFB4 /* SignInViewController.swift */,
-				50F35C202092FD3800B1CFB4 /* SignUpViewController.swift */,
 				50F35C222093113300B1CFB4 /* HomePageViewController.swift */,
+				50337799208E5E0100A674C9 /* AppDelegate.swift */,
 				5033779D208E5E0100A674C9 /* Main.storyboard */,
+				503377A5208E5E0100A674C9 /* Info.plist */,
 				50C0820920B7D0CC001D3BD9 /* GoogleService-Info.plist */,
 				5021399F2097979B003EFEE1 /* DataModel.xcdatamodeld */,
+				503377A0208E5E0100A674C9 /* Assets.xcassets */,
+				503377A2208E5E0100A674C9 /* LaunchScreen.storyboard */,
 				50233AD42160233600FF2F3C /* ImageUploadManager.swift */,
 			);
 			path = FinalProject;
@@ -187,6 +186,15 @@
 			);
 			name = Models;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		50FA05AA2188F242001C58F8 /* LoggingIn */ = {
+			isa = PBXGroup;
+			children = (
+				50F35C1E2092F82E00B1CFB4 /* SignInViewController.swift */,
+				50F35C202092FD3800B1CFB4 /* SignUpViewController.swift */,
+			);
+			path = LoggingIn;
 			sourceTree = "<group>";
 		};
 		605E7B80691DFC0981E4E763 /* Pods */ = {

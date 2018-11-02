@@ -7,21 +7,13 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class HomeDetailsViewController: UIViewController {
-
-    var name:String = ""
-    var address:String = ""
-    var city:String = ""
-    var state:String = ""
-    var zipcode:String = ""
-    var phonenumber:String = ""
-    var hometype:String = ""
-    var walletid:String = ""
-    var price:String = ""
-    var photoid: String = ""
-    var details: String = ""
     
+    var key:String = ""
+    var firebaseReference: DatabaseReference?
     
     override func viewDidLoad() {
         super.viewDidLoad()
