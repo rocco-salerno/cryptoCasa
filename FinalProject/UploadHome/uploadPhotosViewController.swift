@@ -14,7 +14,16 @@ class uploadPhotosViewController: UIViewController {
     
     
     var firebaseReference:DatabaseReference?
-    var key:String = ""
+    
+    var theListing:String = ""
+    var name: String = ""
+    var address: String = ""
+    var phonenumber: String = ""
+    var city: String = ""
+    var state: String = ""
+    var zipcode: String = ""
+    var hometype: String = ""
+    var listingname: String = ""
     
     let imagePicker = UIImagePickerController()
     
@@ -30,6 +39,7 @@ class uploadPhotosViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
     @IBAction func BackToUploadHomeBtn(_ sender: UIButton) {
         performSegue(withIdentifier: "BackToUploadHome", sender: self)
     }
@@ -49,13 +59,21 @@ class uploadPhotosViewController: UIViewController {
       performSegue(withIdentifier: "PresentDetailsPage", sender: self)
     }
     
-    //send key value to HomeDetailsViewController
+    //send values to HomeDetailsViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.destination is HomeDetailsViewController
         {
             let vc = segue.destination as? HomeDetailsViewController
-            vc?.key = key
+            vc?.theListing = theListing
+            vc?.name = name
+            vc?.phonenumber = phonenumber
+            vc?.address = address
+            vc?.city = city
+            vc?.state = state
+            vc?.hometype = hometype
+            vc?.zipcode = zipcode
+            vc?.listingname = listingname
         }
     }
     
@@ -63,7 +81,7 @@ class uploadPhotosViewController: UIViewController {
     func uploadImageToFirebase(data: NSData)
     {
         //reference to location where photos will be stored
-        let storageReference = Storage.storage().reference(withPath: "Customer_Photos/\(key).jpg")
+        let storageReference = Storage.storage().reference(withPath: "Customer_Photos/\(theListing).jpg")
         //upload files to firebase
         let uploadMetadata = StorageMetadata()
         uploadMetadata.contentType = "image/jpeg"

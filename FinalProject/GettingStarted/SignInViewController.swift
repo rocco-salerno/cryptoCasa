@@ -59,7 +59,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Login with Biometrics", reply: {(wasCorrect, error)in
                 if wasCorrect
                 {
-                    let signUpComplete = self.storyboard?.instantiateViewController(withIdentifier: "HomePageViewController") as! HomePageViewController
+                    let signUpComplete = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
                     self.present(signUpComplete, animated: true)
                 }
                 else

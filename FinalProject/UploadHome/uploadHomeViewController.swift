@@ -8,11 +8,17 @@
 
 import UIKit
 import FirebaseDatabase
+import LocalAuthentication
+import FirebaseAuth
 
 class uploadHomeViewController: UIViewController, UITextFieldDelegate {
-    var key:String = ""
+    var theListing:String = ""
+    let userIDKey = Auth.auth().currentUser!.uid
     var firebaseReference:DatabaseReference?
     
+    
+    @IBOutlet weak var menuButton: UIBarButtonItem!
+    @IBOutlet weak var listingNameLabel: UITextField!
     @IBOutlet weak var nameLabel: UITextField!
     @IBOutlet weak var addressLabel: UITextField!
     @IBOutlet weak var phoneNumberLabel: UITextField!
@@ -27,6 +33,7 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
     var state: String = ""
     var zipcode: String = ""
     var hometype: String = ""
+    var listingname: String = ""
     
     
     @IBOutlet weak var homeTypeOutlet: UIPickerView!
@@ -36,7 +43,7 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        firebaseReference = Database.database().reference().child("Customers")
+        firebaseReference = Database.database().reference().child("Homes").child(userIDKey)
         
         self.nameLabel.delegate = self
         self.addressLabel.delegate = self
@@ -44,6 +51,7 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
         self.stateLabel.delegate = self
         self.zipcodeLabel.delegate = self
         self.phoneNumberLabel.delegate = self
+        self.listingNameLabel.delegate = self
         homeTypeOutlet.dataSource = self
         homeTypeOutlet.delegate = self
         // Do any additional setup after loading the view.
@@ -58,24 +66,50 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func backBtnPressed(_ sender: UIButton)
-    {
-        let backToHome = self.storyboard?.instantiateViewController(withIdentifier: "HomePageViewController") as! HomePageViewController
-            self.present(backToHome, animated: true)
+    @IBAction func backBtnPressed(_ sender: UIButton) {
+        let backToHome = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+        self.present(backToHome, animated: true)
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.destination is uploadPhotosViewController
         {
+            name = nameLabel.text!
+            phonenumber = phoneNumberLabel.text!
+            address = addressLabel.text!
+            city = cityLabel.text!
+            state = stateLabel.text!
+            hometype = homeTypeFromPicker.text!
+            zipcode = zipcodeLabel.text!
+            listingname = listingNameLabel.text!
+            
             let vc = segue.destination as? uploadPhotosViewController
-            vc?.key = key
+            vc?.theListing = theListing
+            vc?.name = name
+            vc?.phonenumber = phonenumber
+            vc?.address = address
+            vc?.city = city
+            vc?.state = state
+            vc?.hometype = hometype
+            vc?.zipcode = zipcode
+            vc?.listingname = listingname
         }
     }
     
     @IBAction func continueToPhotosBtn(_ sender: UIButton) {
+        if(nameLabel.text != nil && addressLabel.text != nil && cityLabel.text != nil && stateLabel.text != nil && zipcodeLabel.text != nil && phoneNumberLabel.text != nil && listingNameLabel.text != nil && homeTypeFromPicker.text != nil)
+        {
             addCustomerInfo()
             performSegue(withIdentifier: "PresentPhotosPage", sender: self)
+        }
+        else{
+            let alert = UIAlertController(title: "Whoops!", message: "You are missing fields.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title:"Okay", style: .default, handler:  { action in self.performSegue(withIdentifier: "HomeUploadViewController", sender: self)}))
+            self.present(alert,animated: true, completion: nil)
+        }
     }
     ///////////////////////////////////////////////////////////////////////////////////////////
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -86,19 +120,20 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
 
     func addCustomerInfo()
     {
-        key = (firebaseReference?.childByAutoId().key)!
+        theListing = listingNameLabel.text!
         
-        if(nameLabel.text != nil && addressLabel.text != nil && cityLabel.text != nil && stateLabel.text != nil && zipcodeLabel.text != nil && phoneNumberLabel.text != nil && homeTypeFromPicker.text != nil)
+        if(nameLabel.text != nil && addressLabel.text != nil && cityLabel.text != nil && stateLabel.text != nil && zipcodeLabel.text != nil && phoneNumberLabel.text != nil && listingNameLabel.text != nil && homeTypeFromPicker.text != nil)
         {
-            let customer = ["ID": key,
+            let customer = [
                         "Name": nameLabel.text!,
                         "Address": addressLabel.text!,
                         "City": cityLabel.text!,
                         "State": stateLabel.text!,
                         "Zipcode":zipcodeLabel.text!,
                         "PhoneNumber": phoneNumberLabel.text!,
+                        "ListingName": listingNameLabel.text!,
                         "Hometype": homeTypeFromPicker.text!]
-            firebaseReference!.child(key).setValue(customer)
+            firebaseReference!.child(theListing).setValue(customer)
         }
         else{
             let alert = UIAlertController(title: "Whoops!", message: "You are missing fields.", preferredStyle: UIAlertControllerStyle.alert)
@@ -108,7 +143,8 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
-    ///////////////////////////////////////////////////////////////////////////////////////////
+    
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 }
 
 

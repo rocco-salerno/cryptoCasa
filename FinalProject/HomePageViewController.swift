@@ -11,24 +11,40 @@ import Firebase
 import FirebaseAuth
 
 class HomePageViewController: UIViewController {
-var myStringValue : String?
+    
+    @IBOutlet weak var menuButtonOutlet: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        sideMenu()
 
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
+    
     
     @IBAction func signOutBtn(_ sender: UIBarButtonItem) {
         try! Auth.auth().signOut()
-        let signOut = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-        self.present(signOut, animated: true)
+        if let storyboard = self.storyboard{
+            let vc = storyboard.instantiateViewController(withIdentifier: "StartPage")
+            self.present(vc, animated: false, completion: nil)
+        }
     }
     
-
-
+    
+    
+    
+    func sideMenu()
+    {
+        if revealViewController != nil {
+            menuButtonOutlet.target = revealViewController()
+            menuButtonOutlet.action = #selector(SWRevealViewController.revealToggle(_:))
+            revealViewController()?.rearViewRevealWidth = 275
+            revealViewController()?.rightViewRevealWidth = 160
+            
+            view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
+            
+        }
+    }
+    
 }

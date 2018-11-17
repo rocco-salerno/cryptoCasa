@@ -48,7 +48,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIApplication
     @IBAction func submitSignupBtn(_ sender: UIButton) {
         
         let alert = UIAlertController(title: "Success!", message: "You Have Created An Account", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title:"Proceed", style: .default, handler:  { action in self.performSegue(withIdentifier: "HomePageViewController", sender: self)}))
+        alert.addAction(UIAlertAction(title:"Proceed", style: .default, handler:  { action in self.performSegue(withIdentifier: "HomePage", sender: self)}))
         
         if(emailAddressTxtField.text?.isEmpty)! || (passwordTxtField.text?.isEmpty)! || (retypePasswordTxtField.text?.isEmpty)!
         {
@@ -67,9 +67,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIApplication
             Auth.auth().createUser(withEmail: emailAddressTxtField.text!, password: passwordTxtField.text!) {user, error in
                 if error == nil && user != nil{
                     print("user created!")
-                    let signupSuccess = self.storyboard?.instantiateViewController(withIdentifier: "HomePageViewController") as! HomePageViewController
-                    
-                    self.present(signupSuccess, animated: true)
+                    let alert = UIAlertController(title: "Success!", message: "Your Account Was Created!", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title:"Proceed", style: .default, handler:  { action in self.performSegue(withIdentifier: "HomePage", sender: self)}))
+                    self.present(alert, animated: true, completion: nil)
                 }else
                 {
                     print("Error creating user: \(error?.localizedDescription)")
