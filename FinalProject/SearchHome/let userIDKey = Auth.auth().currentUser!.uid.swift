@@ -14,11 +14,10 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     
-    
     var ref:  DatabaseReference?
     var databaseHandle: DatabaseHandle?
-    var myListings = ["Message1", "Message2"]
-    
+    var myListings = [String]()
+    let userIDKey = Auth.auth().currentUser!.uid
    
     
     
@@ -30,18 +29,19 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         ref = Database.database().reference()
             
-       databaseHandle = ref?.child("Homes").observe(.childAdded, with: { (snapshot) in
-            
-            //when a child is added under Homes
-            //take the value snapshot and add it to the myListingsArray
-            let post = snapshot.value as? String
+       databaseHandle = ref?.child("Homes").child(userIDKey).observe(.value, with: { (snapshot) in
         
-        if let actualPost = post{
-            self.myListings.append(actualPost)
+        //try to convert our data to a String
+        if let result = snapshot.children.allObjects as? [DataSnapshot] {
+            for child in result {
+                var userListings = child.key as! String
+                //append data to myListings array
+                self.myListings.append(userListings)
             
-            
+            //reload the tableview
+            self.tableView.reloadData()
         }
-        })
+        }})
         // Do any additional setup after loading the view.
     }
     

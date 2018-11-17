@@ -24,7 +24,7 @@
 		50C0820A20B7D0CC001D3BD9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50C0820920B7D0CC001D3BD9 /* GoogleService-Info.plist */; };
 		50CF92F6219ECC3F00F7EAFB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50CF92F5219ECC3F00F7EAFB /* SWRevealViewController.m */; };
 		50F12DC321A0320000A1FEEE /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F12DC221A0320000A1FEEE /* MenuTableViewController.swift */; };
-		50F12DC521A036E000A1FEEE /* ListingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F12DC421A036E000A1FEEE /* ListingsViewController.swift */; };
+		50F12DC521A036E000A1FEEE /* let userIDKey = Auth.auth().currentUser!.uid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F12DC421A036E000A1FEEE /* let userIDKey = Auth.auth().currentUser!.uid.swift */; };
 		50F35C1F2092F82E00B1CFB4 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F35C1E2092F82E00B1CFB4 /* SignInViewController.swift */; };
 		50F35C212092FD3800B1CFB4 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F35C202092FD3800B1CFB4 /* SignUpViewController.swift */; };
 		50F35C232093113300B1CFB4 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F35C222093113300B1CFB4 /* HomePageViewController.swift */; };
@@ -76,7 +76,7 @@
 		50CF92F4219ECC3F00F7EAFB /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		50CF92F5219ECC3F00F7EAFB /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		50F12DC221A0320000A1FEEE /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
-		50F12DC421A036E000A1FEEE /* ListingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsViewController.swift; sourceTree = "<group>"; };
+		50F12DC421A036E000A1FEEE /* let userIDKey = Auth.auth().currentUser!.uid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "let userIDKey = Auth.auth().currentUser!.uid.swift"; sourceTree = "<group>"; };
 		50F35C1E2092F82E00B1CFB4 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		50F35C202092FD3800B1CFB4 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		50F35C222093113300B1CFB4 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
@@ -203,7 +203,7 @@
 		50F4086F218D4A6500F59DDB /* SearchHome */ = {
 			isa = PBXGroup;
 			children = (
-				50F12DC421A036E000A1FEEE /* ListingsViewController.swift */,
+				50F12DC421A036E000A1FEEE /* let userIDKey = Auth.auth().currentUser!.uid.swift */,
 			);
 			path = SearchHome;
 			sourceTree = "<group>";
@@ -473,7 +473,7 @@
 				50F12DC321A0320000A1FEEE /* MenuTableViewController.swift in Sources */,
 				50233AD92161656100FF2F3C /* HomeDetailsViewController.swift in Sources */,
 				039FB2722151953B005A549C /* uploadHomeViewController.swift in Sources */,
-				50F12DC521A036E000A1FEEE /* ListingsViewController.swift in Sources */,
+				50F12DC521A036E000A1FEEE /* let userIDKey = Auth.auth().currentUser!.uid.swift in Sources */,
 				039FB2742151953B005A549C /* uploadPhotosViewController.swift in Sources */,
 				50F35C1F2092F82E00B1CFB4 /* SignInViewController.swift in Sources */,
 			);
