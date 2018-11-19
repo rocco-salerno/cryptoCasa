@@ -15,6 +15,7 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
     var theListing:String = ""
     let userIDKey = Auth.auth().currentUser!.uid
     var firebaseReference:DatabaseReference?
+    var firebaseReference2:DatabaseReference?
     
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
@@ -34,6 +35,7 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
     var zipcode: String = ""
     var hometype: String = ""
     var listingname: String = ""
+    var uniqueIDKeyString: String = ""
     
     
     @IBOutlet weak var homeTypeOutlet: UIPickerView!
@@ -44,6 +46,7 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         firebaseReference = Database.database().reference().child("Homes").child(userIDKey)
+        firebaseReference2 = Database.database().reference().child("Listings").childByAutoId()
         
         self.nameLabel.delegate = self
         self.addressLabel.delegate = self
@@ -74,6 +77,8 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
+        var uniqueIDKey = Database.database().reference().child("Listings").childByAutoId()
+        
         if segue.destination is uploadPhotosViewController
         {
             name = nameLabel.text!
@@ -84,6 +89,7 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
             hometype = homeTypeFromPicker.text!
             zipcode = zipcodeLabel.text!
             listingname = listingNameLabel.text!
+            uniqueIDKeyString = uniqueIDKey.key!
             
             let vc = segue.destination as? uploadPhotosViewController
             vc?.theListing = theListing
@@ -95,6 +101,7 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
             vc?.hometype = hometype
             vc?.zipcode = zipcode
             vc?.listingname = listingname
+            vc?.uniqueIDKeyString = uniqueIDKeyString
         }
     }
     
@@ -124,7 +131,7 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
         
         if(nameLabel.text != nil && addressLabel.text != nil && cityLabel.text != nil && stateLabel.text != nil && zipcodeLabel.text != nil && phoneNumberLabel.text != nil && listingNameLabel.text != nil && homeTypeFromPicker.text != nil)
         {
-            let customer = [
+            let listing = [
                         "Name": nameLabel.text!,
                         "Address": addressLabel.text!,
                         "City": cityLabel.text!,
@@ -133,7 +140,8 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
                         "PhoneNumber": phoneNumberLabel.text!,
                         "ListingName": listingNameLabel.text!,
                         "Hometype": homeTypeFromPicker.text!]
-            firebaseReference!.child(theListing).setValue(customer)
+            firebaseReference!.child(theListing).setValue(listing)
+            firebaseReference2!.child(theListing).setValue(listing)
         }
         else{
             let alert = UIAlertController(title: "Whoops!", message: "You are missing fields.", preferredStyle: UIAlertControllerStyle.alert)

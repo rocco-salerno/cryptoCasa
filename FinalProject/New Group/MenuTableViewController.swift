@@ -11,6 +11,13 @@ import UIKit
 class MenuTableViewController: UITableViewController {
 
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //deleting all unused rows
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+    }
+    
     @IBAction func HomeBtn(_ sender: UIButton) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController")
         self.present(vc!, animated: false, completion: nil)

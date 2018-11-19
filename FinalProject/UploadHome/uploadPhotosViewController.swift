@@ -24,6 +24,7 @@ class uploadPhotosViewController: UIViewController {
     var zipcode: String = ""
     var hometype: String = ""
     var listingname: String = ""
+    var uniqueIDKeyString: String = ""
     
     let imagePicker = UIImagePickerController()
     
@@ -74,6 +75,7 @@ class uploadPhotosViewController: UIViewController {
             vc?.hometype = hometype
             vc?.zipcode = zipcode
             vc?.listingname = listingname
+            vc?.uniqueIDKeyString = uniqueIDKeyString
         }
     }
     

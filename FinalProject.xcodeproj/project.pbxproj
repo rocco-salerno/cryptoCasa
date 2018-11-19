@@ -10,9 +10,11 @@
 		039FB2722151953B005A549C /* uploadHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039FB2712151953B005A549C /* uploadHomeViewController.swift */; };
 		039FB2742151953B005A549C /* uploadPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039FB2732151953B005A549C /* uploadPhotosViewController.swift */; };
 		4CEC9C48E5F664737F43813D /* Pods_Login_RegisterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B5E92056FE5E06DEB0FC38 /* Pods_Login_RegisterTests.framework */; };
+		5013F33D21A145AD00BAB105 /* ManageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5013F33C21A145AD00BAB105 /* ManageListViewController.swift */; };
 		502139A12097979B003EFEE1 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5021399F2097979B003EFEE1 /* DataModel.xcdatamodeld */; };
 		50233AD52160233600FF2F3C /* ImageUploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50233AD42160233600FF2F3C /* ImageUploadManager.swift */; };
 		50233AD92161656100FF2F3C /* HomeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50233AD82161656100FF2F3C /* HomeDetailsViewController.swift */; };
+		502FFF2A21A1CF4C00E87AB3 /* SearchHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502FFF2921A1CF4C00E87AB3 /* SearchHomeViewController.swift */; };
 		5033779A208E5E0100A674C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50337799208E5E0100A674C9 /* AppDelegate.swift */; };
 		5033779C208E5E0100A674C9 /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5033779B208E5E0100A674C9 /* StartPageViewController.swift */; };
 		5033779F208E5E0100A674C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5033779D208E5E0100A674C9 /* Main.storyboard */; };
@@ -24,7 +26,6 @@
 		50C0820A20B7D0CC001D3BD9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50C0820920B7D0CC001D3BD9 /* GoogleService-Info.plist */; };
 		50CF92F6219ECC3F00F7EAFB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50CF92F5219ECC3F00F7EAFB /* SWRevealViewController.m */; };
 		50F12DC321A0320000A1FEEE /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F12DC221A0320000A1FEEE /* MenuTableViewController.swift */; };
-		50F12DC521A036E000A1FEEE /* let userIDKey = Auth.auth().currentUser!.uid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F12DC421A036E000A1FEEE /* let userIDKey = Auth.auth().currentUser!.uid.swift */; };
 		50F35C1F2092F82E00B1CFB4 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F35C1E2092F82E00B1CFB4 /* SignInViewController.swift */; };
 		50F35C212092FD3800B1CFB4 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F35C202092FD3800B1CFB4 /* SignUpViewController.swift */; };
 		50F35C232093113300B1CFB4 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F35C222093113300B1CFB4 /* HomePageViewController.swift */; };
@@ -54,9 +55,11 @@
 		039FB2732151953B005A549C /* uploadPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadPhotosViewController.swift; sourceTree = "<group>"; };
 		31E959A29F59DC3CD1E1531A /* Pods-Login_RegisterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login_RegisterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Login_RegisterTests/Pods-Login_RegisterTests.release.xcconfig"; sourceTree = "<group>"; };
 		4021D393B18581735AB9C560 /* Pods-Login_RegisterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Login_RegisterUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Login_RegisterUITests/Pods-Login_RegisterUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5013F33C21A145AD00BAB105 /* ManageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageListViewController.swift; sourceTree = "<group>"; };
 		502139A02097979B003EFEE1 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		50233AD42160233600FF2F3C /* ImageUploadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadManager.swift; sourceTree = "<group>"; };
 		50233AD82161656100FF2F3C /* HomeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailsViewController.swift; sourceTree = "<group>"; };
+		502FFF2921A1CF4C00E87AB3 /* SearchHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHomeViewController.swift; sourceTree = "<group>"; };
 		50337796208E5E0100A674C9 /* Login_Register.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Login_Register.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50337799208E5E0100A674C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5033779B208E5E0100A674C9 /* StartPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
@@ -76,7 +79,6 @@
 		50CF92F4219ECC3F00F7EAFB /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		50CF92F5219ECC3F00F7EAFB /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		50F12DC221A0320000A1FEEE /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
-		50F12DC421A036E000A1FEEE /* let userIDKey = Auth.auth().currentUser!.uid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "let userIDKey = Auth.auth().currentUser!.uid.swift"; sourceTree = "<group>"; };
 		50F35C1E2092F82E00B1CFB4 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		50F35C202092FD3800B1CFB4 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		50F35C222093113300B1CFB4 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 		50337798208E5E0100A674C9 /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				50401F4F21A13B2700DAD05B /* SideMenu */,
 				50F4086F218D4A6500F59DDB /* SearchHome */,
 				50FA05AA2188F242001C58F8 /* GettingStarted */,
 				039FB2702151953B005A549C /* UploadHome */,
@@ -200,10 +203,18 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
+		50401F4F21A13B2700DAD05B /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				5013F33C21A145AD00BAB105 /* ManageListViewController.swift */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
 		50F4086F218D4A6500F59DDB /* SearchHome */ = {
 			isa = PBXGroup;
 			children = (
-				50F12DC421A036E000A1FEEE /* let userIDKey = Auth.auth().currentUser!.uid.swift */,
+				502FFF2921A1CF4C00E87AB3 /* SearchHomeViewController.swift */,
 			);
 			path = SearchHome;
 			sourceTree = "<group>";
@@ -464,16 +475,17 @@
 			files = (
 				50CF92F6219ECC3F00F7EAFB /* SWRevealViewController.m in Sources */,
 				5033779C208E5E0100A674C9 /* StartPageViewController.swift in Sources */,
+				502FFF2A21A1CF4C00E87AB3 /* SearchHomeViewController.swift in Sources */,
 				5033779A208E5E0100A674C9 /* AppDelegate.swift in Sources */,
 				50F35C212092FD3800B1CFB4 /* SignUpViewController.swift in Sources */,
 				502139A12097979B003EFEE1 /* DataModel.xcdatamodeld in Sources */,
 				50233AD52160233600FF2F3C /* ImageUploadManager.swift in Sources */,
+				5013F33D21A145AD00BAB105 /* ManageListViewController.swift in Sources */,
 				50F35C232093113300B1CFB4 /* HomePageViewController.swift in Sources */,
 				5039070520BE991800488512 /* databaseModel.swift in Sources */,
 				50F12DC321A0320000A1FEEE /* MenuTableViewController.swift in Sources */,
 				50233AD92161656100FF2F3C /* HomeDetailsViewController.swift in Sources */,
 				039FB2722151953B005A549C /* uploadHomeViewController.swift in Sources */,
-				50F12DC521A036E000A1FEEE /* let userIDKey = Auth.auth().currentUser!.uid.swift in Sources */,
 				039FB2742151953B005A549C /* uploadPhotosViewController.swift in Sources */,
 				50F35C1F2092F82E00B1CFB4 /* SignInViewController.swift in Sources */,
 			);
