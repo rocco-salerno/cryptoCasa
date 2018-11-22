@@ -22,6 +22,8 @@ class HomeDetailsViewController: UIViewController, UITextFieldDelegate {
     var hometype: String = ""
     var listingname: String = ""
     var uniqueIDKeyString: String = ""
+    
+    
     var firebaseReference: DatabaseReference?
     var firebaseReference2: DatabaseReference?
     
@@ -34,8 +36,8 @@ class HomeDetailsViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        firebaseReference = Database.database().reference().child("Homes").child(userIDKey)
-        firebaseReference2 = Database.database().reference().child("Listings").child(uniqueIDKeyString)
+        firebaseReference = Database.database().reference().child("Users").child(userIDKey)
+        firebaseReference2 = Database.database().reference().child("Listings")
         
         self.priceTxtField.delegate = self
         self.walletIDTxtField.delegate = self
@@ -71,8 +73,8 @@ class HomeDetailsViewController: UIViewController, UITextFieldDelegate {
                         "PhoneNumber": phonenumber,
                         "ListingName": listingname,
                         "Hometype": hometype] as [String : Any]
-            firebaseReference!.child(theListing).setValue(info)
-            firebaseReference2?.child(theListing).setValue(info)
+            firebaseReference!.child(uniqueIDKeyString).setValue(info)
+            firebaseReference2?.child(uniqueIDKeyString).setValue(info)
         }
     }
     

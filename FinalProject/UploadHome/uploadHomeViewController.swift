@@ -45,7 +45,7 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        firebaseReference = Database.database().reference().child("Homes").child(userIDKey)
+        firebaseReference = Database.database().reference().child("Users").child(userIDKey)
         firebaseReference2 = Database.database().reference().child("Listings").childByAutoId()
         
         self.nameLabel.delegate = self
@@ -77,7 +77,7 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        var uniqueIDKey = Database.database().reference().child("Listings").childByAutoId()
+        var uniqueIDKey = firebaseReference2?.key
         
         if segue.destination is uploadPhotosViewController
         {
@@ -89,7 +89,7 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
             hometype = homeTypeFromPicker.text!
             zipcode = zipcodeLabel.text!
             listingname = listingNameLabel.text!
-            uniqueIDKeyString = uniqueIDKey.key!
+            uniqueIDKeyString = uniqueIDKey!
             
             let vc = segue.destination as? uploadPhotosViewController
             vc?.theListing = theListing
@@ -127,7 +127,6 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
 
     func addCustomerInfo()
     {
-        theListing = listingNameLabel.text!
         
         if(nameLabel.text != nil && addressLabel.text != nil && cityLabel.text != nil && stateLabel.text != nil && zipcodeLabel.text != nil && phoneNumberLabel.text != nil && listingNameLabel.text != nil && homeTypeFromPicker.text != nil)
         {
@@ -140,8 +139,8 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
                         "PhoneNumber": phoneNumberLabel.text!,
                         "ListingName": listingNameLabel.text!,
                         "Hometype": homeTypeFromPicker.text!]
-            firebaseReference!.child(theListing).setValue(listing)
-            firebaseReference2!.child(theListing).setValue(listing)
+            firebaseReference!.child(firebaseReference2!.key!).setValue(listing)
+            firebaseReference2!.setValue(listing)
         }
         else{
             let alert = UIAlertController(title: "Whoops!", message: "You are missing fields.", preferredStyle: UIAlertControllerStyle.alert)

@@ -35,7 +35,7 @@ class ManageListViewController: UIViewController, UITableViewDelegate, UITableVi
         //deleting all unused rows
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
-        databaseHandle = ref?.child("Homes").child(userIDKey).observe(.value, with: { (snapshot) in
+        databaseHandle = ref?.child("Users").child(userIDKey).observe(.value, with: { (snapshot) in
             
             //try to convert our data to a String
             if let result = snapshot.children.allObjects as? [DataSnapshot] {
@@ -71,7 +71,8 @@ class ManageListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        let deleteRef = Database.database().reference().child("Homes").child(userIDKey).child(myListings[indexPath.row])
+        let deleteRef = Database.database().reference().child("Users").child(userIDKey).child(myListings[indexPath.row])
+        let deleteRefListings = Database.database().reference().child("Listings").child(myListings[indexPath.row])
         
         if editingStyle == .delete {
             myListings.remove(at: indexPath.row)
@@ -79,6 +80,7 @@ class ManageListViewController: UIViewController, UITableViewDelegate, UITableVi
             //tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
             deleteRef.removeValue()
+            deleteRefListings.removeValue()
             //tableView.endUpdates()
             myListings.removeAll()
             self.tableView.reloadData()
