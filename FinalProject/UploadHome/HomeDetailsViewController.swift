@@ -22,6 +22,7 @@ class HomeDetailsViewController: UIViewController, UITextFieldDelegate {
     var hometype: String = ""
     var listingname: String = ""
     var uniqueIDKeyString: String = ""
+    var imageURLString: String = ""
     
     
     var firebaseReference: DatabaseReference?
@@ -72,6 +73,7 @@ class HomeDetailsViewController: UIViewController, UITextFieldDelegate {
                         "Zipcode":zipcode,
                         "PhoneNumber": phonenumber,
                         "ListingName": listingname,
+                        "PhotoURL": imageURLString,
                         "Hometype": hometype] as [String : Any]
             firebaseReference!.child(uniqueIDKeyString).setValue(info)
             firebaseReference2?.child(uniqueIDKeyString).setValue(info)

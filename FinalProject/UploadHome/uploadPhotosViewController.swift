@@ -25,6 +25,8 @@ class uploadPhotosViewController: UIViewController {
     var hometype: String = ""
     var listingname: String = ""
     var uniqueIDKeyString: String = ""
+    var imageURLString: String = ""
+    var imageID: String = ""
     
     let imagePicker = UIImagePickerController()
     
@@ -76,18 +78,39 @@ class uploadPhotosViewController: UIViewController {
             vc?.zipcode = zipcode
             vc?.listingname = listingname
             vc?.uniqueIDKeyString = uniqueIDKeyString
+            vc?.imageURLString = imageURLString
         }
     }
     
     //upload image to firebase function
     func uploadImageToFirebase(data: NSData)
     {
+        var imageURL: String = ""
         //reference to location where photos will be stored
-        let storageReference = Storage.storage().reference(withPath: "Customer_Photos/\(theListing).jpg")
+        var theImageID = NSUUID().uuidString + ".jpg"
+        imageID = theImageID
+        let storageReference = Storage.storage().reference(withPath: "Listings/\(imageID)")
+        
         //upload files to firebase
         let uploadMetadata = StorageMetadata()
         uploadMetadata.contentType = "image/jpeg"
-        storageReference.putData(data as Data, metadata: uploadMetadata)
+        storageReference.putData(data as Data, metadata: uploadMetadata) {(metadata, error) in
+            if(error != nil){print(error)}
+            else{
+                storageReference.downloadURL(completion: {(url, error) in
+                    if(error != nil){
+                        print(error)
+                        return
+                    }
+                    if(url != nil){
+                        imageURL = url!.absoluteString
+                        print("IT ACTUALLY FUCKING WORKS:\(imageURL)")
+                        self.imageURLString = imageURL
+                    }
+                })
+            }
+        }
+       // imageURLString = imageURL
     }
 
 }//end uploadPhotoViewController
@@ -101,12 +124,12 @@ extension uploadPhotosViewController: UIImagePickerControllerDelegate, UINavigat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        var imageDownloadURL: String = ""
         
         imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         
         let imageData = UIImageJPEGRepresentation(image!, 0.8)
         uploadImageToFirebase(data: imageData as! NSData)
-        
         self.dismiss(animated: true, completion: nil)
         
         

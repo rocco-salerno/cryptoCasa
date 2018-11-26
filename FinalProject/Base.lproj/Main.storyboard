@@ -1129,6 +1129,7 @@
         <image name="titlu135" width="750" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="K31-UV-VF1"/>
         <segue reference="W9y-vk-dqA"/>
         <segue reference="BwH-V9-ru8"/>
         <segue reference="4cW-cS-lj4"/>
