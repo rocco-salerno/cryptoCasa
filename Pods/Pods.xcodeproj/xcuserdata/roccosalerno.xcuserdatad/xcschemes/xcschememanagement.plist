@@ -33,7 +33,7 @@
 		<key>FirebaseStorage.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>10</integer>
 		</dict>
 		<key>GTMSessionFetcher.xcscheme</key>
 		<dict>
@@ -50,7 +50,7 @@
 		<key>GoogleUtilities.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>10</integer>
+			<integer>11</integer>
 		</dict>
 		<key>Pods-Login_Register.xcscheme</key>
 		<dict>
