@@ -10,6 +10,7 @@ target 'Login_Register' do
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
+  pod 'JTAppleCalendar', '~> 7.0'
 
   target 'Login_RegisterTests' do
     inherit! :search_paths

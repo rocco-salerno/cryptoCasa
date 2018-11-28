@@ -11,9 +11,10 @@ import Firebase
 import FirebaseDatabase
 
 class SearchHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var menuButtonOutlet: UIBarButtonItem!
     
     var ref:  DatabaseReference?
     var databaseHandle: DatabaseHandle?
@@ -61,6 +62,17 @@ class SearchHomeViewController: UIViewController, UITableViewDelegate, UITableVi
         return true
     }
     
-
+    func sideMenu()
+    {
+        if revealViewController != nil {
+            menuButtonOutlet.target = revealViewController()
+            menuButtonOutlet.action = #selector(SWRevealViewController.revealToggle(_:))
+            revealViewController()?.rearViewRevealWidth = 275
+            revealViewController()?.rightViewRevealWidth = 160
+            
+            view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
+            
+        }
+    }
 
 }
