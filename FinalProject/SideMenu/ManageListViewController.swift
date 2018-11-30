@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseAuth
 
 class ManageListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -21,7 +22,7 @@ class ManageListViewController: UIViewController, UITableViewDelegate, UITableVi
     var databaseHandle: DatabaseHandle?
     var myListings = [String]()
     let userIDKey = Auth.auth().currentUser!.uid
-    
+    var listingsArray = [ManageListingModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,21 @@ class ManageListViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.dataSource = self
         
         ref = Database.database().reference()
+        
+        //getting a snapshot of all children and their values
+        let dref = Database.database().reference().child("Users").child(userIDKey)
+        dref.observe(.childAdded, with: { (snapshot) in
+            print(snapshot)
+            guard let dictionary = snapshot.value as? [String : AnyObject] else {
+                return
+            }
+            let Obj = ManageListingModel()
+            Obj.ListingID = snapshot.key
+            Obj.ListingName = (dictionary["ListingName"] as? String)!
+            
+            
+            self.listingsArray.append(Obj)
+        }, withCancel: nil)
         
         //deleting all unused rows
         tableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -54,12 +70,12 @@ class ManageListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return myListings.count
+        return listingsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListingCell")
-        cell?.textLabel?.text = myListings[indexPath.row]
+        cell?.textLabel?.text = listingsArray[indexPath.row].ListingName
         
         return cell!
     }
@@ -71,18 +87,15 @@ class ManageListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        let deleteRef = Database.database().reference().child("Users").child(userIDKey).child(myListings[indexPath.row])
-        let deleteRefListings = Database.database().reference().child("Listings").child(myListings[indexPath.row])
+        let deleteRef = Database.database().reference().child("Users").child(userIDKey).child(listingsArray[indexPath.row].ListingID)
+        let deleteRefListings = Database.database().reference().child("Listings").child(listingsArray[indexPath.row].ListingID)
         
         if editingStyle == .delete {
-            myListings.remove(at: indexPath.row)
+            listingsArray.remove(at: indexPath.row)
             
-            //tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
             deleteRef.removeValue()
             deleteRefListings.removeValue()
-            //tableView.endUpdates()
-            myListings.removeAll()
             self.tableView.reloadData()
         }
     }

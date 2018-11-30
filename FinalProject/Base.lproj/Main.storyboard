@@ -522,11 +522,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="338.66666666666669"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DSp-Wr-L1e">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSp-Wr-L1e">
                                                     <rect key="frame" x="15" y="11" width="201" height="157"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="DSp-Wr-L1e" secondAttribute="height" multiplier="201:157" id="1cs-iK-7Xj"/>
-                                                    </constraints>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listing Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZF-iB-BY1">
                                                     <rect key="frame" x="224" y="11" width="136" height="21"/>
@@ -622,9 +620,6 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="uZF-iB-BY1" firstAttribute="trailing" secondItem="mbL-pK-tiv" secondAttribute="trailingMargin" id="8Vs-Mi-grS"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="DSp-Wr-L1e" secondAttribute="bottom" constant="160" id="ByD-0u-3ea"/>
-                                                <constraint firstItem="DSp-Wr-L1e" firstAttribute="leading" secondItem="mbL-pK-tiv" secondAttribute="leadingMargin" id="EaC-OQ-V4x"/>
-                                                <constraint firstItem="DSp-Wr-L1e" firstAttribute="top" secondItem="mbL-pK-tiv" secondAttribute="topMargin" id="GuX-ef-xzR"/>
                                                 <constraint firstItem="uZF-iB-BY1" firstAttribute="top" secondItem="mbL-pK-tiv" secondAttribute="topMargin" id="Ssf-mU-gWE"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="uZF-iB-BY1" secondAttribute="bottom" constant="296" id="Zla-ym-x77"/>
                                             </constraints>

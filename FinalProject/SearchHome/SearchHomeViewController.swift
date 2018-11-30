@@ -79,12 +79,19 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListingCell") as! SearchHomeTableViewCell
-        
+        cell.listingImage.clipsToBounds = true;
         let listing = ListArr[indexPath.row]
-    
+        cell.listingImage.contentMode = .scaleToFill
        let downloadURL = URL(string: listing.PhotoURL)
-        
-     /*   Alamofire.request(downloadURL!).responseData { (response) in
+     /*   URLSession.shared.dataTask(with: downloadURL!, completionHandler: {(data, response, error) in
+            if let error = error {
+                print("Image read error \(error)")
+                return
+            }
+            cell.listingImage.image = UIImage(data: data!)
+        }).resume()
+        */
+       Alamofire.request(downloadURL!).responseData { (response) in
                 if response.error == nil {
                     print(response.result)
                 
@@ -93,7 +100,7 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
                         cell.listingImage.image = UIImage(data: data)
                         }
                     }
-        } */
+        }
         
         cell.listingNameLabel.text = ListArr[indexPath.row].ListingName
         cell.addressLabel.text = ListArr[indexPath.row].Address
@@ -114,4 +121,6 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
         
         return true
     }
+    
+
 }
