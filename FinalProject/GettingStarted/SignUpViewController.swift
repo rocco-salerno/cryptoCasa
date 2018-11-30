@@ -16,7 +16,9 @@ import FirebaseAuth
 class SignUpViewController: UIViewController, UITextFieldDelegate, UIApplicationDelegate {
 
     @IBOutlet weak var ScrollView: UIScrollView!
-  
+    @IBOutlet weak var submitOutlet: UIButton!
+    
+    @IBOutlet weak var cancelOutlet: UIButton!
     @IBOutlet weak var emailAddressTxtField: UITextField!
     
     @IBOutlet weak var passwordTxtField: UITextField!
@@ -36,6 +38,25 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIApplication
         self.passwordTxtField.delegate = self;
         self.emailAddressTxtField.delegate = self;
         
+        emailAddressTxtField.layer.borderWidth = 1
+        emailAddressTxtField.layer.borderColor = UIColor.white.cgColor
+        emailAddressTxtField.layer.cornerRadius = 20
+        
+        passwordTxtField.layer.borderWidth = 1
+        passwordTxtField.layer.borderColor = UIColor.white.cgColor
+        passwordTxtField.layer.cornerRadius = 20
+        
+        retypePasswordTxtField.layer.borderWidth = 1
+        retypePasswordTxtField.layer.borderColor = UIColor.white.cgColor
+        retypePasswordTxtField.layer.cornerRadius = 20
+        
+        submitOutlet.layer.borderWidth = 1
+        submitOutlet.layer.borderColor = UIColor.white.cgColor
+        submitOutlet.layer.cornerRadius = 20
+        
+        cancelOutlet.layer.borderWidth = 1
+        cancelOutlet.layer.borderColor = UIColor.white.cgColor
+        cancelOutlet.layer.cornerRadius = 20
     }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
