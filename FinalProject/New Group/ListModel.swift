@@ -9,6 +9,17 @@
 import UIKit
 
 class ListModel: NSObject {
-    var UID: String = ""
+    var ListingID: String = ""
     var PhotoURL: String = ""
+    var Name: String = ""
+    var Address: String = ""
+    var City: String = ""
+    var State: String = ""
+    var Zipcode: String = ""
+    var WalletID: String = ""
+    var PhoneNumber: String = ""
+    var HomeDetails: String = ""
+    var ListingName: String = ""
+    var Price: String = ""
+    var HomeType: String = ""
 }

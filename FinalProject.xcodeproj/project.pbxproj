@@ -25,6 +25,7 @@
 		503377BA208E5E0100A674C9 /* FinalProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503377B9208E5E0100A674C9 /* FinalProjectUITests.swift */; };
 		5039070520BE991800488512 /* databaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039070420BE991800488512 /* databaseModel.swift */; };
 		509B09F621A633E9009CBAAB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50C0820920B7D0CC001D3BD9 /* GoogleService-Info.plist */; };
+		50ACE99121AFFC8E00CD4303 /* SearchHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACE99021AFFC8E00CD4303 /* SearchHomeTableViewCell.swift */; };
 		50CF92F6219ECC3F00F7EAFB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50CF92F5219ECC3F00F7EAFB /* SWRevealViewController.m */; };
 		50F12DC321A0320000A1FEEE /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F12DC221A0320000A1FEEE /* MenuTableViewController.swift */; };
 		50F35C1F2092F82E00B1CFB4 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F35C1E2092F82E00B1CFB4 /* SignInViewController.swift */; };
@@ -76,6 +77,7 @@
 		503377B9208E5E0100A674C9 /* FinalProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalProjectUITests.swift; sourceTree = "<group>"; };
 		503377BB208E5E0100A674C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5039070420BE991800488512 /* databaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = databaseModel.swift; sourceTree = "<group>"; };
+		50ACE99021AFFC8E00CD4303 /* SearchHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHomeTableViewCell.swift; sourceTree = "<group>"; };
 		50C0820920B7D0CC001D3BD9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		50CF92F3219ECC3E00F7EAFB /* Login_Register-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Login_Register-Bridging-Header.h"; sourceTree = "<group>"; };
 		50CF92F4219ECC3F00F7EAFB /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				502FFF2921A1CF4C00E87AB3 /* SearchHomeViewController.swift */,
+				50ACE99021AFFC8E00CD4303 /* SearchHomeTableViewCell.swift */,
 			);
 			path = SearchHome;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Login_Register/Pods-Login_Register-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
@@ -424,6 +428,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
@@ -482,6 +487,7 @@
 				5033779C208E5E0100A674C9 /* StartPageViewController.swift in Sources */,
 				502FFF2A21A1CF4C00E87AB3 /* SearchHomeViewController.swift in Sources */,
 				5033779A208E5E0100A674C9 /* AppDelegate.swift in Sources */,
+				50ACE99121AFFC8E00CD4303 /* SearchHomeTableViewCell.swift in Sources */,
 				50F35C212092FD3800B1CFB4 /* SignUpViewController.swift in Sources */,
 				502139A12097979B003EFEE1 /* DataModel.xcdatamodeld in Sources */,
 				50233AD52160233600FF2F3C /* ImageUploadManager.swift in Sources */,

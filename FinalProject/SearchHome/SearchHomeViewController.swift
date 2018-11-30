@@ -9,29 +9,27 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import Alamofire
 
-class SearchHomeViewController: UIViewController{
+class SearchHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-    @IBOutlet weak var labelOutlet: UILabel!
-    @IBAction func button(_ sender: UIButton) {
-        numberofElements.text = String(listingArray.count)
-    }
-    
-    @IBOutlet weak var numberofElements: UILabel!
     var ref:  DatabaseReference?
     var databaseHandle: DatabaseHandle?
     var ListArr = [ListModel]()
     var listingArray = [String]()
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //ref = Database.database().reference().child("Listings")
-//        tableView.delegate = self
-   //     tableView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         //deleting all unused rows
-      //  tableView.tableFooterView = UIView(frame: CGRect.zero)
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
 
         //getting a snapshot of all children and their values
         let ref = Database.database().reference().child("Listings")
@@ -40,15 +38,22 @@ class SearchHomeViewController: UIViewController{
             guard let dictionary = snapshot.value as? [String : AnyObject] else {
                 return
             }
-            
             let Obj = ListModel()
-            Obj.UID = snapshot.key
+            Obj.ListingID = snapshot.key
             Obj.PhotoURL = (dictionary["PhotoURL"] as? String)!
+            Obj.ListingName = (dictionary["ListingName"] as? String)!
+            Obj.Address = (dictionary["Address"] as? String)!
+            Obj.City = (dictionary["City"] as? String)!
+            //Obj.HomeType = (dictionary["HomeType"] as? String)!
+            Obj.Name = (dictionary["Name"] as? String)!
+            Obj.PhoneNumber = (dictionary["PhoneNumber"] as? String)!
+            Obj.Price = (dictionary["Price"] as? String)!
+            Obj.State = (dictionary["State"] as? String)!
+            Obj.WalletID = (dictionary["WalletID"] as? String)!
+            Obj.Zipcode = (dictionary["Zipcode"] as? String)!
             
-            self.labelOutlet.text = Obj.UID
             
             self.ListArr.append(Obj)
-            
         }, withCancel: nil)
         
         
@@ -62,26 +67,51 @@ class SearchHomeViewController: UIViewController{
                     self.listingArray.append(userListings)
                     
                     //reload the tableview
-                 //   self.tableView.reloadData()
+                    self.tableView.reloadData()
                 }
             }})
     }
     
-    
- /*   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return listingArray.count
+        return ListArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ListingCell")
-        cell?.textLabel?.text = listingArray[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListingCell") as! SearchHomeTableViewCell
         
-        return cell!
+        let listing = ListArr[indexPath.row]
+    
+       let downloadURL = URL(string: listing.PhotoURL)
+        
+     /*   Alamofire.request(downloadURL!).responseData { (response) in
+                if response.error == nil {
+                    print(response.result)
+                
+                    // Show the downloaded image:
+                    if let data = response.data {
+                        cell.listingImage.image = UIImage(data: data)
+                        }
+                    }
+        } */
+        
+        cell.listingNameLabel.text = ListArr[indexPath.row].ListingName
+        cell.addressLabel.text = ListArr[indexPath.row].Address
+        cell.stateLabel.text = ListArr[indexPath.row].State
+        cell.cityLabel.text = ListArr[indexPath.row].City
+        cell.zipcodeLabel.text = ListArr[indexPath.row].Zipcode
+        cell.phoneLabel.text = ListArr[indexPath.row].PhoneNumber
+        cell.priceLabel.text = ListArr[indexPath.row].Price
+        cell.walletidLabel.text = ListArr[indexPath.row].WalletID
+        cell.nameLabel.text = ListArr[indexPath.row].Name
+        cell.hometypeLabel.text = ListArr[indexPath.row].HomeType
+        cell.homeDetailsLabel.text = ListArr[indexPath.row].HomeDetails
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         
         return true
-    } */
+    }
 }
