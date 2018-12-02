@@ -11,9 +11,9 @@ import UIKit
 class SearchHomeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var listingImage: UIImageView!
-    @IBOutlet weak var listingNameLabel: UILabel!
     
-    @IBOutlet weak var nameLabel: UILabel!
+   
+    @IBOutlet weak var listingNameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
@@ -21,8 +21,6 @@ class SearchHomeTableViewCell: UITableViewCell {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var hometypeLabel: UILabel!
-    @IBOutlet weak var homeDetailsLabel: UILabel!
-    @IBOutlet weak var walletidLabel: UILabel!
     
     
     

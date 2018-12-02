@@ -69,7 +69,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIApplication
     @IBAction func submitSignupBtn(_ sender: UIButton) {
         
         let alert = UIAlertController(title: "Success!", message: "You Have Created An Account", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title:"Proceed", style: .default, handler:  { action in self.performSegue(withIdentifier: "HomePage", sender: self)}))
+        alert.addAction(UIAlertAction(title:"Proceed", style: .default, handler:  { action in self.performSegue(withIdentifier: "SignInViewController", sender: self)}))
         
         if(emailAddressTxtField.text?.isEmpty)! || (passwordTxtField.text?.isEmpty)! || (retypePasswordTxtField.text?.isEmpty)!
         {
@@ -89,7 +89,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIApplication
                 if error == nil && user != nil{
                     print("user created!")
                     let alert = UIAlertController(title: "Success!", message: "Your Account Was Created!", preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title:"Proceed", style: .default, handler:  { action in self.performSegue(withIdentifier: "HomePage", sender: self)}))
+                    alert.addAction(UIAlertAction(title:"Proceed", style: .default, handler:  { action in self.performSegue(withIdentifier: "toLoginPage", sender: self)}))
                     self.present(alert, animated: true, completion: nil)
                 }else
                 {

@@ -17,7 +17,7 @@ class SearchHomeViewController: UIViewController, UITableViewDelegate, UITableVi
     var databaseHandle: DatabaseHandle?
     var ListArr = [ListModel]()
     var listingArray = [String]()
-    
+    var myIndex = 0
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -109,10 +109,10 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
         cell.zipcodeLabel.text = ListArr[indexPath.row].Zipcode
         cell.phoneLabel.text = ListArr[indexPath.row].PhoneNumber
         cell.priceLabel.text = ListArr[indexPath.row].Price
-        cell.walletidLabel.text = ListArr[indexPath.row].WalletID
-        cell.nameLabel.text = ListArr[indexPath.row].Name
+        //cell.walletidLabel.text = ListArr[indexPath.row].WalletID
+        //cell.nameLabel.text = ListArr[indexPath.row].Name
         cell.hometypeLabel.text = ListArr[indexPath.row].HomeType
-        cell.homeDetailsLabel.text = ListArr[indexPath.row].HomeDetails
+       // cell.homeDetailsLabel.text = ListArr[indexPath.row].HomeDetails
         
         return cell
     }
@@ -122,5 +122,20 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
         return true
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+    
+        if segue.destination is SelectedHomeViewController
+        {
+            let vc = segue.destination as? SelectedHomeViewController
+            vc?.ListArr = ListArr
+            vc?.myIndex = myIndex
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        myIndex = indexPath.row
+        performSegue(withIdentifier: "toSelectedHome", sender: self)
+    }
 
 }

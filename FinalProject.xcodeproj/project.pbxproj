@@ -28,6 +28,7 @@
 		509B09F621A633E9009CBAAB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50C0820920B7D0CC001D3BD9 /* GoogleService-Info.plist */; };
 		50ACE99121AFFC8E00CD4303 /* SearchHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACE99021AFFC8E00CD4303 /* SearchHomeTableViewCell.swift */; };
 		50CF92F6219ECC3F00F7EAFB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50CF92F5219ECC3F00F7EAFB /* SWRevealViewController.m */; };
+		50E923E621B474100063E989 /* SelectedHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E923E521B474100063E989 /* SelectedHomeViewController.swift */; };
 		50F12DC321A0320000A1FEEE /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F12DC221A0320000A1FEEE /* MenuTableViewController.swift */; };
 		50F35C1F2092F82E00B1CFB4 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F35C1E2092F82E00B1CFB4 /* SignInViewController.swift */; };
 		50F35C212092FD3800B1CFB4 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F35C202092FD3800B1CFB4 /* SignUpViewController.swift */; };
@@ -84,6 +85,7 @@
 		50CF92F3219ECC3E00F7EAFB /* Login_Register-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Login_Register-Bridging-Header.h"; sourceTree = "<group>"; };
 		50CF92F4219ECC3F00F7EAFB /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		50CF92F5219ECC3F00F7EAFB /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		50E923E521B474100063E989 /* SelectedHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedHomeViewController.swift; sourceTree = "<group>"; };
 		50F12DC221A0320000A1FEEE /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		50F35C1E2092F82E00B1CFB4 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		50F35C202092FD3800B1CFB4 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			children = (
 				502FFF2921A1CF4C00E87AB3 /* SearchHomeViewController.swift */,
 				50ACE99021AFFC8E00CD4303 /* SearchHomeTableViewCell.swift */,
+				50E923E521B474100063E989 /* SelectedHomeViewController.swift */,
 			);
 			path = SearchHome;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				5033779A208E5E0100A674C9 /* AppDelegate.swift in Sources */,
 				50ACE99121AFFC8E00CD4303 /* SearchHomeTableViewCell.swift in Sources */,
 				50F35C212092FD3800B1CFB4 /* SignUpViewController.swift in Sources */,
+				50E923E621B474100063E989 /* SelectedHomeViewController.swift in Sources */,
 				502139A12097979B003EFEE1 /* DataModel.xcdatamodeld in Sources */,
 				50233AD52160233600FF2F3C /* ImageUploadManager.swift in Sources */,
 				501D528E21AF1EA900BD127E /* ListModel.swift in Sources */,
