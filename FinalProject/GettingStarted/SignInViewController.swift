@@ -14,14 +14,35 @@ import LocalAuthentication
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var userEmailAddressTxtField: UITextField!
     @IBOutlet weak var userPasswordTxtField: UITextField!
+    @IBOutlet weak var userEmailAddressTxtField: UITextField!
+    
+    @IBOutlet weak var loginOutlet: UIButton!
+    @IBOutlet weak var backOutlet: UIButton!
+    
+    
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.userEmailAddressTxtField.delegate = self
         self.userPasswordTxtField.delegate = self
+        
+        userPasswordTxtField.layer.borderWidth = 1
+        userPasswordTxtField.layer.borderColor = UIColor.white.cgColor
+        userPasswordTxtField.layer.cornerRadius = 20
+        
+        userEmailAddressTxtField.layer.borderWidth = 1
+        userEmailAddressTxtField.layer.borderColor = UIColor.white.cgColor
+        userEmailAddressTxtField.layer.cornerRadius = 20
+        
+        loginOutlet.layer.borderWidth = 1
+        loginOutlet.layer.borderColor = UIColor.white.cgColor
+        loginOutlet.layer.cornerRadius = 20
+        
+        backOutlet.layer.borderWidth = 1
+        backOutlet.layer.borderColor = UIColor.white.cgColor
+        backOutlet.layer.cornerRadius = 20
     }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -108,7 +108,7 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
     @IBAction func continueToPhotosBtn(_ sender: UIButton) {
         if(nameLabel.text != nil && addressLabel.text != nil && cityLabel.text != nil && stateLabel.text != nil && zipcodeLabel.text != nil && phoneNumberLabel.text != nil && listingNameLabel.text != nil && homeTypeFromPicker.text != nil)
         {
-            addCustomerInfo()
+           // addCustomerInfo()
             performSegue(withIdentifier: "PresentPhotosPage", sender: self)
         }
         else{

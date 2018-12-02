@@ -104,7 +104,7 @@ class uploadPhotosViewController: UIViewController {
                     }
                     if(url != nil){
                         imageURL = url!.absoluteString
-                        print("IT ACTUALLY FUCKING WORKS:\(imageURL)")
+                        print("IT ACTUALLY WORKS:\(imageURL)")
                         self.imageURLString = imageURL
                     }
                 })
