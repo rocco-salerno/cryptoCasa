@@ -44,13 +44,14 @@ class SearchHomeViewController: UIViewController, UITableViewDelegate, UITableVi
             Obj.ListingName = (dictionary["ListingName"] as? String)!
             Obj.Address = (dictionary["Address"] as? String)!
             Obj.City = (dictionary["City"] as? String)!
-            //Obj.HomeType = (dictionary["HomeType"] as? String)!
+            Obj.HomeType = (dictionary["Hometype"] as? String)!
             Obj.Name = (dictionary["Name"] as? String)!
             Obj.PhoneNumber = (dictionary["PhoneNumber"] as? String)!
             Obj.Price = (dictionary["Price"] as? String)!
             Obj.State = (dictionary["State"] as? String)!
             Obj.WalletID = (dictionary["WalletID"] as? String)!
             Obj.Zipcode = (dictionary["Zipcode"] as? String)!
+            Obj.HomeDetails = (dictionary["HomeDetails"] as? String)!
             
             
             self.ListArr.append(Obj)
@@ -112,7 +113,8 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
         //cell.walletidLabel.text = ListArr[indexPath.row].WalletID
         //cell.nameLabel.text = ListArr[indexPath.row].Name
         cell.hometypeLabel.text = ListArr[indexPath.row].HomeType
-       // cell.homeDetailsLabel.text = ListArr[indexPath.row].HomeDetails
+        //
+        //cell.homeDetailsLabel.text = ListArr[indexPath.row].HomeDetails
         
         return cell
     }

@@ -131,7 +131,5 @@ extension uploadPhotosViewController: UIImagePickerControllerDelegate, UINavigat
         let imageData = UIImageJPEGRepresentation(image!, 0.8)
         uploadImageToFirebase(data: imageData as! NSData)
         self.dismiss(animated: true, completion: nil)
-        
-        
     }//imagePickerController
 }
