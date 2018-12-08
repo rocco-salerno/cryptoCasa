@@ -14,7 +14,8 @@ class SelectedHomeViewController: UIViewController {
 
     let formatter = DateFormatter()
     
-    
+    @IBOutlet weak var calendarView: JTAppleCalendarView!
+
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var listingImage: UIImageView!
     @IBOutlet weak var listingNameLabel: UILabel!
@@ -44,7 +45,26 @@ class SelectedHomeViewController: UIViewController {
         detailsLabel.text = ListArr[myIndex].HomeDetails
         priceLabel.text = ListArr[myIndex].Price
         phoneNumberLabel.text = ListArr[myIndex].PhoneNumber
+        
         getImage()
+        setupCalendar()
+    }
+    
+    func handleCellSelected(view: JTAppleCell?, cellState: CellState)
+    {
+     guard let validCell = view as? CustomCell else {return}
+        if cellState.isSelected
+        {
+            validCell.selectedView.isHidden = false
+        }else{
+            validCell.selectedView.isHidden = true
+        }
+    }
+    
+    func setupCalendar()
+    {
+        calendarView.minimumLineSpacing = 0
+        calendarView.minimumInteritemSpacing = 0
     }
     
     func getImage()
@@ -76,6 +96,8 @@ extension SelectedHomeViewController: JTAppleCalendarViewDelegate, JTAppleCalend
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         let myCustomCell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CustomCell", for: indexPath) as! CustomCell
         sharedFunctionToConfigureCell(myCustomCell: myCustomCell, cellState: cellState, date: date)
+        
+        handleCellSelected(view: myCustomCell, cellState: cellState)
         return myCustomCell
     }
     
@@ -97,4 +119,13 @@ extension SelectedHomeViewController: JTAppleCalendarViewDelegate, JTAppleCalend
         myCustomCell.dateLabel.text = cellState.text
         
     }
+    
+    func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        handleCellSelected(view: cell, cellState: cellState)
+    }
+    
+    func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        handleCellSelected(view: cell, cellState: cellState)
+    }
+
 }
