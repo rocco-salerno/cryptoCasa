@@ -49,7 +49,25 @@ class HomeDetailsViewController: UIViewController, UITextFieldDelegate {
         self.priceTxtField.delegate = self
         self.walletIDTxtField.delegate = self
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
     }
+    
+    
+    
+    
+    @objc func keyboardWillShow(sender: NSNotification) {
+        self.view.frame.origin.y -= 150
+    }
+    @objc func keyboardWillHide(sender: NSNotification) {
+        self.view.frame.origin.y += 150
+    }
+    
+    
+    
+    
+    
+    
     
     @objc func DismissKeyboard()
     {
