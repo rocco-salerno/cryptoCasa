@@ -9,10 +9,15 @@
 import UIKit
 import JTAppleCalendar
 import Alamofire
+import Firebase
+import FirebaseAuth
 
 class SelectedHomeViewController: UIViewController {
 
     let formatter = DateFormatter()
+    var ref: DatabaseReference?
+    var userIDKey = Auth.auth().currentUser!.uid
+    var WalletArray = [GetWallet]()
     
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var monthOutlet: UILabel!
@@ -29,6 +34,8 @@ class SelectedHomeViewController: UIViewController {
     @IBOutlet weak var detailsLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var totalAmount: UILabel!
+    var contractID = ""
+    var walletID = ""
     
     var listingID: String = ""
     var rangeSelectedDates = [Date]()
@@ -39,6 +46,7 @@ class SelectedHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        ref = Database.database().reference().child("Wallets")
         listingNameLabel.text = ListArr[myIndex].ListingName
         homeTypeLabel.text = ListArr[myIndex].HomeType
         nameLabel.text = ListArr[myIndex].Name
@@ -55,11 +63,18 @@ class SelectedHomeViewController: UIViewController {
         
         getImage()
         setupCalendar()
+        getWallet()
     }
     
     
     @IBAction func rentThehomeButton(_ sender: UIButton) {
-
+        if WalletArray.isEmpty == true
+        {
+            displayAlertMessage(userMessage: "You Need To Add A Wallet!")
+        }
+        else{
+         sendListingIDToSmartContract()
+        }
     }
     
     
@@ -141,6 +156,75 @@ class SelectedHomeViewController: UIViewController {
             }
         }
     }//getImage
+    
+    
+    func sendListingIDToSmartContract()
+    {
+        let walletID = WalletArray[0].userWalletID
+        print(walletID)
+        
+        contractID = ListArr[myIndex].ContractID
+       
+        // prepare json data
+        let json: NSDictionary = ["WalletID": walletID, "ContractID": contractID, "Price": totalAmount.text!, "PrivateKey": "18F1CB0F03207F6CE9ED3B8D7B8FEDB06C12667CEDF32C1EB8B4D26BC8873F14"]
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        
+        print("This is json data: ",String(decoding: jsonData!, as: UTF8.self))
+        
+        // create post request
+        let url = URL(string: "http://cryptocasa.us-east-2.elasticbeanstalk.com/payContract")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        // insert json data to the request
+        request.httpBody = jsonData
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print("This is the JSON Respons: ",responseJSON)
+            }
+        }
+        
+        task.resume()
+    }//end Post request
+    
+    func getWallet()
+    {
+        let ref = Database.database().reference().child("Wallets").child(userIDKey)
+        ref.observe(.childAdded, with: { (snapshot) in
+            print(snapshot)
+            guard let dictionary = snapshot.value as? [String : AnyObject] else {
+                return
+            }
+            let Obj = GetWallet()
+            Obj.userWalletID = (dictionary["WalletID"] as? String)!
+            
+            
+            self.WalletArray.append(Obj)
+        }, withCancel: nil)
+    }
+    
+    func displayAlertMessage(userMessage: String)->Void
+    {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title:"We have a Problem", message: userMessage, preferredStyle: .alert)
+            
+            let OKAction = UIAlertAction(title: "OK", style: .default)
+            {
+                (action:UIAlertAction!) in DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+            alertController.addAction(OKAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
     
 }
 
@@ -225,4 +309,5 @@ extension SelectedHomeViewController: JTAppleCalendarViewDelegate, JTAppleCalend
         formatter.dateFormat = "MMMM"
         monthOutlet.text = formatter.string(from: date)
     }
+    
 }

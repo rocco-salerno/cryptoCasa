@@ -24,6 +24,7 @@
 		503377AF208E5E0100A674C9 /* FinalProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503377AE208E5E0100A674C9 /* FinalProjectTests.swift */; };
 		503377BA208E5E0100A674C9 /* FinalProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503377B9208E5E0100A674C9 /* FinalProjectUITests.swift */; };
 		503858E621BD503D00F8E320 /* WalletIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503858E521BD503D00F8E320 /* WalletIDViewController.swift */; };
+		503858E821BDB62800F8E320 /* GetWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503858E721BDB62800F8E320 /* GetWallet.swift */; };
 		5039070520BE991800488512 /* databaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039070420BE991800488512 /* databaseModel.swift */; };
 		5043449821B9233B00C059A9 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5043449721B9233B00C059A9 /* CustomCell.swift */; };
 		5044BBC621B13F500031046E /* ManageListingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5044BBC521B13F500031046E /* ManageListingModel.swift */; };
@@ -83,6 +84,7 @@
 		503377B9208E5E0100A674C9 /* FinalProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalProjectUITests.swift; sourceTree = "<group>"; };
 		503377BB208E5E0100A674C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503858E521BD503D00F8E320 /* WalletIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletIDViewController.swift; sourceTree = "<group>"; };
+		503858E721BDB62800F8E320 /* GetWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWallet.swift; sourceTree = "<group>"; };
 		5039070420BE991800488512 /* databaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = databaseModel.swift; sourceTree = "<group>"; };
 		5043449721B9233B00C059A9 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		5044BBC521B13F500031046E /* ManageListingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageListingModel.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				5039070420BE991800488512 /* databaseModel.swift */,
 				501D528D21AF1EA900BD127E /* ListModel.swift */,
 				5044BBC521B13F500031046E /* ManageListingModel.swift */,
+				503858E721BDB62800F8E320 /* GetWallet.swift */,
 			);
 			name = Models;
 			path = "New Group";
@@ -510,6 +513,7 @@
 				50CF92F6219ECC3F00F7EAFB /* SWRevealViewController.m in Sources */,
 				5044BBC621B13F500031046E /* ManageListingModel.swift in Sources */,
 				5043449821B9233B00C059A9 /* CustomCell.swift in Sources */,
+				503858E821BDB62800F8E320 /* GetWallet.swift in Sources */,
 				5033779C208E5E0100A674C9 /* StartPageViewController.swift in Sources */,
 				502FFF2A21A1CF4C00E87AB3 /* SearchHomeViewController.swift in Sources */,
 				5033779A208E5E0100A674C9 /* AppDelegate.swift in Sources */,

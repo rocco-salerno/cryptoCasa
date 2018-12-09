@@ -146,7 +146,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYv-n0-haW">
-                                        <rect key="frame" x="144" y="723" width="86" height="36"/>
+                                        <rect key="frame" x="144.66666666666666" y="723" width="86" height="36"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="86" id="pZ8-nD-baf"/>
@@ -1203,7 +1203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JRP-QF-3TR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-679.20000000000005" y="6.6502463054187197"/>
+            <point key="canvasLocation" x="-679" y="7"/>
         </scene>
         <!--Upload Home View Controller-->
         <scene sceneID="Ep7-7Z-qay">
@@ -1815,6 +1815,9 @@
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" red="0.213840631" green="0.55888239770000003" blue="0.78071462560000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="submitBtn:" destination="zRr-5B-vTp" eventType="touchUpInside" id="NMt-NO-gmM"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please Enter Your WalletID Below" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Q3-ag-j6G">
                                 <rect key="frame" x="6" y="232" width="363" height="21"/>
@@ -1830,6 +1833,11 @@
                     <navigationItem key="navigationItem" id="4Zx-Mv-pUK">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="gRg-1H-eWu"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameText" destination="T2p-6j-6Qz" id="reA-LQ-cqp"/>
+                        <outlet property="submitOutlet" destination="QlY-TB-4P5" id="KW7-ZA-LRa"/>
+                        <segue destination="Gnk-hG-JOM" kind="presentation" identifier="backToTheHomePageWeGo" id="yHd-RW-032"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G75-bX-AT7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1882,6 +1890,6 @@
         <segue reference="W9y-vk-dqA"/>
         <segue reference="L8Z-zQ-aKM"/>
         <segue reference="HOs-E3-y9r"/>
-        <segue reference="4cW-cS-lj4"/>
+        <segue reference="yHd-RW-032"/>
     </inferredMetricsTieBreakers>
 </document>

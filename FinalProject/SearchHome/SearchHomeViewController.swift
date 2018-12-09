@@ -52,6 +52,7 @@ class SearchHomeViewController: UIViewController, UITableViewDelegate, UITableVi
             Obj.WalletID = (dictionary["WalletID"] as? String)!
             Obj.Zipcode = (dictionary["Zipcode"] as? String)!
             Obj.HomeDetails = (dictionary["HomeDetails"] as? String)!
+            Obj.ContractID = (dictionary["ContractID"] as? String)!
             
             
             self.ListArr.append(Obj)

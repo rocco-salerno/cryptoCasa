@@ -22,4 +22,5 @@ class ListModel: NSObject {
     var ListingName: String = ""
     var Price: String = ""
     var HomeType: String = ""
+    var ContractID: String = ""
 }
