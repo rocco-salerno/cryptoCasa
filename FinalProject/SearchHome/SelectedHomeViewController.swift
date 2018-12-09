@@ -15,7 +15,8 @@ class SelectedHomeViewController: UIViewController {
     let formatter = DateFormatter()
     
     @IBOutlet weak var calendarView: JTAppleCalendarView!
-
+    @IBOutlet weak var monthOutlet: UILabel!
+    @IBOutlet weak var yearOutlet: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var listingImage: UIImageView!
     @IBOutlet weak var listingNameLabel: UILabel!
@@ -26,8 +27,12 @@ class SelectedHomeViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var zipcodeLabel: UILabel!
     @IBOutlet weak var detailsLabel: UILabel!
-    
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var totalAmount: UILabel!
+    
+    
+    var rangeSelectedDates = [Date]()
+    var nightsStayed = 0
     
     var ListArr = [ListModel]()
     var myIndex = 0
@@ -45,11 +50,47 @@ class SelectedHomeViewController: UIViewController {
         detailsLabel.text = ListArr[myIndex].HomeDetails
         priceLabel.text = ListArr[myIndex].Price
         phoneNumberLabel.text = ListArr[myIndex].PhoneNumber
+        calendarView.allowsMultipleSelection = true
+        calendarView.isRangeSelectionUsed = true
         
         getImage()
         setupCalendar()
     }
     
+    func handleCellTextColor(view: JTAppleCell?, cellState: CellState)
+    {
+        guard let validCell = view as? CustomCell else {return}
+        
+        if cellState.isSelected {
+            validCell.dateLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        }else{
+            if cellState.dateBelongsTo == .thisMonth
+            {
+                validCell.dateLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            }
+            else{
+                validCell.dateLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            }
+        }
+    }
+    
+    func updateTotal()
+    {
+        if nightsStayed == 0
+        {
+            totalAmount.text = String(0)
+        }
+        else if nightsStayed == 1
+        {
+            totalAmount.text = priceLabel.text
+        }
+        else
+        {
+            self.totalAmount.text = String(Int(priceLabel.text!)! * nightsStayed)
+        }
+    }
+    
+    //handles the cells that are selected
     func handleCellSelected(view: JTAppleCell?, cellState: CellState)
     {
      guard let validCell = view as? CustomCell else {return}
@@ -63,8 +104,20 @@ class SelectedHomeViewController: UIViewController {
     
     func setupCalendar()
     {
+        //getting rid of the border between the cells
         calendarView.minimumLineSpacing = 0
         calendarView.minimumInteritemSpacing = 0
+        
+        //Setup the labels when app is loaded
+        calendarView.visibleDates{ visibleDates in
+            let date = visibleDates.monthDates.first!.date
+            
+            self.formatter.dateFormat = "yyyy"
+            self.yearOutlet.text = self.formatter.string(from: date)
+            
+            self.formatter.dateFormat = "MMMM"
+            self.monthOutlet.text = self.formatter.string(from: date)
+        }
     }
     
     func getImage()
@@ -86,10 +139,12 @@ class SelectedHomeViewController: UIViewController {
 }
 
 extension SelectedHomeViewController: JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource{
+    
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
         let myCustomCell = cell as! CustomCell
         
         sharedFunctionToConfigureCell(myCustomCell: myCustomCell, cellState: cellState, date: date)
+        
     }
     
  
@@ -98,6 +153,8 @@ extension SelectedHomeViewController: JTAppleCalendarViewDelegate, JTAppleCalend
         sharedFunctionToConfigureCell(myCustomCell: myCustomCell, cellState: cellState, date: date)
         
         handleCellSelected(view: myCustomCell, cellState: cellState)
+        handleCellTextColor(view: myCustomCell, cellState: cellState)
+        
         return myCustomCell
     }
     
@@ -107,7 +164,7 @@ extension SelectedHomeViewController: JTAppleCalendarViewDelegate, JTAppleCalend
         formatter.timeZone = Calendar.current.timeZone
         formatter.locale = Calendar.current.locale
         
-        let startDate = formatter.date(from:"2018 01 01")!
+        let startDate = formatter.date(from:"2018 12 01")!
         let endDate = formatter.date(from: "2020 12 30")!
         
         let parameters = ConfigurationParameters(startDate: startDate, endDate: endDate)
@@ -120,12 +177,46 @@ extension SelectedHomeViewController: JTAppleCalendarViewDelegate, JTAppleCalend
         
     }
     
+    //when the user selects a date
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         handleCellSelected(view: cell, cellState: cellState)
+        handleCellTextColor(view: cell, cellState: cellState)
+        
+        rangeSelectedDates.append(date)
+        nightsStayed = rangeSelectedDates.count - 1
+        updateTotal()
+        print(rangeSelectedDates.count)
+        print(nightsStayed)
     }
     
+    //when the user deselects a date
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         handleCellSelected(view: cell, cellState: cellState)
+        handleCellTextColor(view: cell, cellState: cellState)
+        
+        rangeSelectedDates.remove(at: rangeSelectedDates.count - 1)
+        if(nightsStayed > 0)
+        {
+            nightsStayed = rangeSelectedDates.count - 1
+        }
+        else
+        {
+            nightsStayed = 0
+        }
+        updateTotal()
+        
+        print(rangeSelectedDates.count)
+        print(nightsStayed)
     }
-
+    
+    //changes month and year when user scrolls
+    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+        let date = visibleDates.monthDates.first!.date
+        
+        formatter.dateFormat = "yyyy"
+        yearOutlet.text = formatter.string(from: date)
+        
+        formatter.dateFormat = "MMMM"
+        monthOutlet.text = formatter.string(from: date)
+    }
 }
