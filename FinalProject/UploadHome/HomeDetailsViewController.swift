@@ -24,6 +24,7 @@ class HomeDetailsViewController: UIViewController, UITextFieldDelegate {
     var listingname: String = ""
     var uniqueIDKeyString: String = ""
     var imageURLString: String = ""
+    var privateKey: String = ""
     
     
     var firebaseReference: DatabaseReference?
@@ -34,7 +35,7 @@ class HomeDetailsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var priceTxtField: UITextField!
     @IBOutlet weak var homeDescription: UITextView!
     @IBOutlet weak var walletIDTxtField: UITextField!
-    
+    @IBOutlet weak var privateKeyTxt: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,10 +62,11 @@ class HomeDetailsViewController: UIViewController, UITextFieldDelegate {
     
     func sendListingIDToSmartContract()
     {
+        privateKey = privateKeyTxt.text!
         let theListingID = firebaseReference!.child(userIDKey).child(uniqueIDKeyString).key
         print(theListingID!)
         // prepare json data
-        let json: [String: Any] = ["ListingID": theListingID!]
+        let json: NSDictionary = ["ListingID": theListingID!, "PrivateKey": privateKey]
         
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         

@@ -34,19 +34,19 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         
         userPasswordTxtField.layer.borderWidth = 1
         userPasswordTxtField.layer.borderColor = UIColor.white.cgColor
-        userPasswordTxtField.layer.cornerRadius = 20
+        userPasswordTxtField.layer.cornerRadius = 15
         
         userEmailAddressTxtField.layer.borderWidth = 1
         userEmailAddressTxtField.layer.borderColor = UIColor.white.cgColor
-        userEmailAddressTxtField.layer.cornerRadius = 20
+        userEmailAddressTxtField.layer.cornerRadius = 15
         
         loginOutlet.layer.borderWidth = 1
         loginOutlet.layer.borderColor = UIColor.white.cgColor
-        loginOutlet.layer.cornerRadius = 20
+        loginOutlet.layer.cornerRadius = 15
         
         backOutlet.layer.borderWidth = 1
         backOutlet.layer.borderColor = UIColor.white.cgColor
-        backOutlet.layer.cornerRadius = 20
+        backOutlet.layer.cornerRadius = 15
     }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 

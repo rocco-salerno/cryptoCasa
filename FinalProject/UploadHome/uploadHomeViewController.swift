@@ -18,6 +18,7 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
     var firebaseReference2:DatabaseReference?
     
     
+    @IBOutlet weak var photoBtnOutlet: UIButton!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var listingNameLabel: UITextField!
     @IBOutlet weak var nameLabel: UITextField!
@@ -215,5 +216,9 @@ extension uploadHomeViewController: UIPickerViewDelegate, UIPickerViewDataSource
         listingNameLabel.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         listingNameLabel.layer.borderWidth = 1
         listingNameLabel.layer.cornerRadius = 15
+        
+        photoBtnOutlet.layer.cornerRadius = 15
+        photoBtnOutlet.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        photoBtnOutlet.layer.borderWidth = 1
     }
 }

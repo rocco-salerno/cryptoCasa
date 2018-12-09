@@ -44,23 +44,23 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIApplication
         
         emailAddressTxtField.layer.borderWidth = 1
         emailAddressTxtField.layer.borderColor = UIColor.white.cgColor
-        emailAddressTxtField.layer.cornerRadius = 20
+        emailAddressTxtField.layer.cornerRadius = 15
         
         passwordTxtField.layer.borderWidth = 1
         passwordTxtField.layer.borderColor = UIColor.white.cgColor
-        passwordTxtField.layer.cornerRadius = 20
+        passwordTxtField.layer.cornerRadius = 15
         
         retypePasswordTxtField.layer.borderWidth = 1
         retypePasswordTxtField.layer.borderColor = UIColor.white.cgColor
-        retypePasswordTxtField.layer.cornerRadius = 20
+        retypePasswordTxtField.layer.cornerRadius = 15
         
         submitOutlet.layer.borderWidth = 1
         submitOutlet.layer.borderColor = UIColor.white.cgColor
-        submitOutlet.layer.cornerRadius = 20
+        submitOutlet.layer.cornerRadius = 15
         
         cancelOutlet.layer.borderWidth = 1
         cancelOutlet.layer.borderColor = UIColor.white.cgColor
-        cancelOutlet.layer.cornerRadius = 20
+        cancelOutlet.layer.cornerRadius = 15
     }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 

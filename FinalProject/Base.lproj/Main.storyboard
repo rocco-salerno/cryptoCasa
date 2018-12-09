@@ -243,16 +243,8 @@
                                 <color key="textColor" red="0.21384063102677464" green="0.55888239766648384" blue="0.78071462560000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please Enter Your Email Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Vl-QO-hjb">
-                                <rect key="frame" x="16" y="294" width="350" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="20"/>
-                                <color key="textColor" red="0.213840631" green="0.55888239770000003" blue="0.78071462560000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Breifly Describe your incident:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwQ-j1-5QP">
-                                <rect key="frame" x="16" y="381" width="343" height="21"/>
+                                <rect key="frame" x="16" y="328" width="343" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="20"/>
@@ -278,16 +270,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Soj-Pf-tp4">
-                                <rect key="frame" x="16" y="323" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="textColor" red="0.14971664179999999" green="0.78071462560000005" blue="0.57917548959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="btm-J0-cGN">
-                                <rect key="frame" x="16" y="410" width="343" height="276"/>
+                                <rect key="frame" x="16" y="357" width="343" height="276"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" red="0.14971664179999999" green="0.78071462560000005" blue="0.57917548959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -303,7 +287,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="claimTxt" destination="btm-J0-cGN" id="0ye-tt-qAt"/>
-                        <outlet property="emailTxt" destination="Soj-Pf-tp4" id="5lO-ZX-DYU"/>
                         <outlet property="menuButton" destination="J2L-Ss-4tw" id="26J-rB-G71"/>
                         <outlet property="nameTxt" destination="dQg-Nj-IzN" id="we1-FG-pde"/>
                         <outlet property="submitOutlet" destination="cpz-2I-Pbc" id="gkF-qN-0JZ"/>
@@ -1350,6 +1333,7 @@
                         <outlet property="menuButton" destination="f22-bX-iva" id="SWB-k6-JEi"/>
                         <outlet property="nameLabel" destination="AMM-wT-f9v" id="gM8-gO-jDV"/>
                         <outlet property="phoneNumberLabel" destination="vdN-iu-Hpa" id="lkp-0T-gfN"/>
+                        <outlet property="photoBtnOutlet" destination="yuM-QB-4b2" id="Us3-tp-IvM"/>
                         <outlet property="stateLabel" destination="Y4j-g7-ffD" id="frk-gp-kSw"/>
                         <outlet property="zipcodeLabel" destination="sYd-VS-U7q" id="BJh-ew-eZ0"/>
                         <segue destination="3Md-6A-5u3" kind="presentation" identifier="PresentPhotosPage" id="Czc-gl-C2d"/>
@@ -1538,7 +1522,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Wallet ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aNF-rB-HSM">
-                                <rect key="frame" x="97" y="473" width="262" height="30"/>
+                                <rect key="frame" x="16" y="511" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Private Key:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ur4-7m-M1f">
+                                <rect key="frame" x="17" y="615" width="90" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Please enter your Private Key below to initiate the Smart Contract. Your Private Key will not be stored for your security." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ci3-OM-g2g">
+                                <rect key="frame" x="16" y="549" width="343" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Private Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OFS-yy-VJr">
+                                <rect key="frame" x="16" y="653" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1551,6 +1556,7 @@
                     <connections>
                         <outlet property="homeDescription" destination="3do-ut-Pf4" id="Omt-ER-NbT"/>
                         <outlet property="priceTxtField" destination="ljr-Bl-HLW" id="get-ak-1hq"/>
+                        <outlet property="privateKeyTxt" destination="OFS-yy-VJr" id="6Hj-hJ-267"/>
                         <outlet property="walletIDTxtField" destination="aNF-rB-HSM" id="eSI-xL-DbB"/>
                         <segue destination="Gnk-hG-JOM" kind="presentation" identifier="BackHomePage" id="zH3-tq-S82"/>
                     </connections>
@@ -1639,7 +1645,7 @@
         <image name="userLogin-1" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Czc-gl-C2d"/>
+        <segue reference="W9y-vk-dqA"/>
         <segue reference="L8Z-zQ-aKM"/>
         <segue reference="cKJ-Tu-k24"/>
         <segue reference="zH3-tq-S82"/>
