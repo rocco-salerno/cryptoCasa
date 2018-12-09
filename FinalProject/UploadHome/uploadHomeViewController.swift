@@ -45,8 +45,14 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        colorThings()
+        let Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))
+        view.addGestureRecognizer(Tap)
+        
         firebaseReference = Database.database().reference().child("Users").child(userIDKey)
         firebaseReference2 = Database.database().reference().child("Listings").childByAutoId()
+        
         
         self.nameLabel.delegate = self
         self.addressLabel.delegate = self
@@ -74,6 +80,10 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
         self.present(backToHome, animated: true)
     }
     
+    @objc func DismissKeyboard()
+    {
+        view.endEditing(true)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
@@ -175,4 +185,35 @@ extension uploadHomeViewController: UIPickerViewDelegate, UIPickerViewDataSource
         return homeTypes[row]
     }
     
+    
+    func colorThings()
+    {
+        nameLabel.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        nameLabel.layer.borderWidth = 1
+        nameLabel.layer.cornerRadius = 15
+        
+        addressLabel.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        addressLabel.layer.borderWidth = 1
+        addressLabel.layer.cornerRadius = 15
+        
+        cityLabel.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        cityLabel.layer.borderWidth = 1
+        cityLabel.layer.cornerRadius = 15
+        
+        stateLabel.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        stateLabel.layer.borderWidth = 1
+        stateLabel.layer.cornerRadius = 15
+        
+        zipcodeLabel.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        zipcodeLabel.layer.borderWidth = 1
+        zipcodeLabel.layer.cornerRadius = 15
+        
+        phoneNumberLabel.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        phoneNumberLabel.layer.borderWidth = 1
+        phoneNumberLabel.layer.cornerRadius = 15
+        
+        listingNameLabel.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        listingNameLabel.layer.borderWidth = 1
+        listingNameLabel.layer.cornerRadius = 15
+    }
 }

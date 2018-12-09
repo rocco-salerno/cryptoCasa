@@ -25,6 +25,10 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))
+        
+        view.addGestureRecognizer(Tap)
         self.userEmailAddressTxtField.delegate = self
         self.userPasswordTxtField.delegate = self
         
@@ -51,6 +55,11 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    @objc func DismissKeyboard()
+    {
+        view.endEditing(true)
+    }
 
     @IBAction func signinSubmit(_ sender: UIButton) {
         Auth.auth().signIn(withEmail: userEmailAddressTxtField.text!, password: userPasswordTxtField.text!){ user, error in

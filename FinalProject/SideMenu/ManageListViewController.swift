@@ -76,7 +76,7 @@ class ManageListViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListingCell")
         cell?.textLabel?.text = listingsArray[indexPath.row].ListingName
-        
+        cell?.textLabel?.textColor = #colorLiteral(red: 0.1497166418, green: 0.7807146256, blue: 0.5791754896, alpha: 1)
         return cell!
     }
     

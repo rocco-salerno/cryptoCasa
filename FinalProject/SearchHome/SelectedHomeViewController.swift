@@ -30,10 +30,9 @@ class SelectedHomeViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var totalAmount: UILabel!
     
-    
+    var listingID: String = ""
     var rangeSelectedDates = [Date]()
     var nightsStayed = 0
-    
     var ListArr = [ListModel]()
     var myIndex = 0
     
@@ -50,12 +49,19 @@ class SelectedHomeViewController: UIViewController {
         detailsLabel.text = ListArr[myIndex].HomeDetails
         priceLabel.text = ListArr[myIndex].Price
         phoneNumberLabel.text = ListArr[myIndex].PhoneNumber
+        listingID = ListArr[myIndex].ListingID
         calendarView.allowsMultipleSelection = true
         calendarView.isRangeSelectionUsed = true
         
         getImage()
         setupCalendar()
     }
+    
+    
+    @IBAction func rentThehomeButton(_ sender: UIButton) {
+
+    }
+    
     
     func handleCellTextColor(view: JTAppleCell?, cellState: CellState)
     {

@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseAuth
 
 class HomeDetailsViewController: UIViewController, UITextFieldDelegate {
     
@@ -37,6 +38,10 @@ class HomeDetailsViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))
+        view.addGestureRecognizer(Tap)
+        
         firebaseReference = Database.database().reference().child("Users").child(userIDKey)
         firebaseReference2 = Database.database().reference().child("Listings")
         
@@ -45,12 +50,51 @@ class HomeDetailsViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    @objc func DismissKeyboard()
+    {
+        view.endEditing(true)
+    }
+    
     @IBAction func BackToPhotoUploadBtn(_ sender: UIButton) {
         performSegue(withIdentifier: "BackToPhotoUpload", sender: self)
     }
     
+    func sendListingIDToSmartContract()
+    {
+        let theListingID = firebaseReference!.child(userIDKey).child(uniqueIDKeyString).key
+        print(theListingID!)
+        // prepare json data
+        let json: [String: Any] = ["ListingID": theListingID!]
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        
+        print("This is json data: ",String(decoding: jsonData!, as: UTF8.self))
+        
+        // create post request
+        let url = URL(string: "http://cryptocasa.us-east-2.elasticbeanstalk.com/create")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        // insert json data to the request
+        request.httpBody = jsonData
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print("This is the JSON Respons: ",responseJSON)
+            }
+        }
+        
+        task.resume()
+    }//end Post request
+    
     @IBAction func finishListingBtn(_ sender: UIButton) {
         uploadExtraInfo()
+        sendListingIDToSmartContract()
         
         let alert = UIAlertController(title: "Success!", message: "Your Listing Was Created!", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title:"Proceed", style: .default, handler:  { action in self.performSegue(withIdentifier: "BackHomePage", sender: self)}))

@@ -32,6 +32,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIApplication
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))
+        
+        view.addGestureRecognizer(Tap)
+        
         // Do any additional setup after loading the view.
         ref = Database.database().reference()
         self.retypePasswordTxtField.delegate = self;
@@ -65,7 +69,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIApplication
         // Dispose of any resources that can be recreated.
     }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    
+    @objc func DismissKeyboard()
+    {
+        view.endEditing(true)
+    }
+    
     @IBAction func submitSignupBtn(_ sender: UIButton) {
         
         let alert = UIAlertController(title: "Success!", message: "You Have Created An Account", preferredStyle: UIAlertControllerStyle.alert)
