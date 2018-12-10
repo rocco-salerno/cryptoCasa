@@ -12,7 +12,9 @@ import Firebase
 
 class uploadPhotosViewController: UIViewController {
     
-    
+    @IBOutlet weak var backBtnOutlet: UIButton!
+    @IBOutlet weak var uploadPhotosOutlet: UIButton!
+    @IBOutlet weak var homeDetailsOutlet: UIButton!
     var firebaseReference:DatabaseReference?
     
     var theListing:String = ""
@@ -27,7 +29,6 @@ class uploadPhotosViewController: UIViewController {
     var uniqueIDKeyString: String = ""
     var imageURLString: String = ""
     var imageID: String = ""
-    
     let imagePicker = UIImagePickerController()
     
     
@@ -35,6 +36,7 @@ class uploadPhotosViewController: UIViewController {
         super.viewDidLoad()
         imagePicker.delegate = self
         firebaseReference = Database.database().reference()
+        colorThings()
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,7 +61,7 @@ class uploadPhotosViewController: UIViewController {
     
     //move to the Home Details View page
     @IBAction func toHomeDetails(_ sender: UIButton) {
-      performSegue(withIdentifier: "PresentDetailsPage", sender: self)
+            performSegue(withIdentifier: "PresentDetailsPage", sender: self)
     }
     
     //send values to HomeDetailsViewController
@@ -112,7 +114,21 @@ class uploadPhotosViewController: UIViewController {
         }
        // imageURLString = imageURL
     }
-
+    func colorThings()
+    {
+        backBtnOutlet.layer.cornerRadius = 15
+        backBtnOutlet.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        backBtnOutlet.layer.borderWidth = 1
+        
+        uploadPhotosOutlet.layer.cornerRadius = 15
+        uploadPhotosOutlet.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        uploadPhotosOutlet.layer.borderWidth = 1
+        
+        homeDetailsOutlet.layer.cornerRadius = 15
+        homeDetailsOutlet.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        homeDetailsOutlet.layer.borderWidth = 1
+    }
+    
 }//end uploadPhotoViewController
 
 
@@ -123,13 +139,12 @@ extension uploadPhotosViewController: UIImagePickerControllerDelegate, UINavigat
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+       let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         var imageDownloadURL: String = ""
         
         imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        
         let imageData = UIImageJPEGRepresentation(image!, 0.8)
         uploadImageToFirebase(data: imageData as! NSData)
-        self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
     }//imagePickerController
 }

@@ -13,6 +13,8 @@ import FirebaseAuth
 
 class HomeDetailsViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var finishBtnOutlet: UIButton!
+    @IBOutlet weak var backBtnOutlet: UIButton!
     var theListing:String = ""
     var name: String = ""
     var address: String = ""
@@ -42,27 +44,13 @@ class HomeDetailsViewController: UIViewController, UITextFieldDelegate {
         
         let Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))
         view.addGestureRecognizer(Tap)
-        
+        colorThings()
         firebaseReference = Database.database().reference().child("Users").child(userIDKey)
         firebaseReference2 = Database.database().reference().child("Listings")
         
         self.priceTxtField.delegate = self
         self.walletIDTxtField.delegate = self
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
     }
-    
-    
-    
-    
-    @objc func keyboardWillShow(sender: NSNotification) {
-        self.view.frame.origin.y -= 250
-    }
-    @objc func keyboardWillHide(sender: NSNotification) {
-        self.view.frame.origin.y += 250
-    }
-    
     
     @objc func DismissKeyboard()
     {
@@ -143,6 +131,33 @@ class HomeDetailsViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return true
+    }
+    
+    func colorThings()
+    {
+        backBtnOutlet.layer.cornerRadius = 15
+        backBtnOutlet.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        backBtnOutlet.layer.borderWidth = 1
+        
+        finishBtnOutlet.layer.cornerRadius = 15
+        finishBtnOutlet.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        finishBtnOutlet.layer.borderWidth = 1
+        
+        priceTxtField.layer.cornerRadius = 15
+        priceTxtField.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        priceTxtField.layer.borderWidth = 1
+        
+        walletIDTxtField.layer.cornerRadius = 15
+        walletIDTxtField.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        walletIDTxtField.layer.borderWidth = 1
+        
+        privateKeyTxt.layer.cornerRadius = 15
+        privateKeyTxt.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        privateKeyTxt.layer.borderWidth = 1
+        
+        homeDescription.layer.cornerRadius = 15
+        homeDescription.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        homeDescription.layer.borderWidth = 1
     }
     
 }//HomeDetailViewController

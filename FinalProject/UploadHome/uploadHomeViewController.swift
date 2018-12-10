@@ -18,6 +18,8 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
     var firebaseReference2:DatabaseReference?
     
     
+    @IBOutlet weak var backBtnOutlet: UIButton!
+    @IBOutlet weak var addPhotosOutlet: UIButton!
     @IBOutlet weak var photoBtnOutlet: UIButton!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var listingNameLabel: UITextField!
@@ -117,16 +119,16 @@ class uploadHomeViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func continueToPhotosBtn(_ sender: UIButton) {
-        if(nameLabel.text != nil && addressLabel.text != nil && cityLabel.text != nil && stateLabel.text != nil && zipcodeLabel.text != nil && phoneNumberLabel.text != nil && listingNameLabel.text != nil && homeTypeFromPicker.text != nil)
+        if((nameLabel.text?.isEmpty)! || (addressLabel.text?.isEmpty)! || (cityLabel.text?.isEmpty)! || (stateLabel.text?.isEmpty)! || (zipcodeLabel.text?.isEmpty)! || (phoneNumberLabel.text?.isEmpty)! || (listingNameLabel.text?.isEmpty)! || (homeTypeFromPicker.text?.isEmpty)!)
         {
-           // addCustomerInfo()
-            performSegue(withIdentifier: "PresentPhotosPage", sender: self)
-        }
-        else{
             let alert = UIAlertController(title: "Whoops!", message: "You are missing fields.", preferredStyle: UIAlertControllerStyle.alert)
             
-            alert.addAction(UIAlertAction(title:"Okay", style: .default, handler:  { action in self.performSegue(withIdentifier: "HomeUploadViewController", sender: self)}))
+            alert.addAction(UIAlertAction(title:"Okay", style: .default, handler: nil))
             self.present(alert,animated: true, completion: nil)
+        }
+        else{
+            // addCustomerInfo()
+            performSegue(withIdentifier: "PresentPhotosPage", sender: self)
         }
     }
     ///////////////////////////////////////////////////////////////////////////////////////////
@@ -220,5 +222,13 @@ extension uploadHomeViewController: UIPickerViewDelegate, UIPickerViewDataSource
         photoBtnOutlet.layer.cornerRadius = 15
         photoBtnOutlet.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         photoBtnOutlet.layer.borderWidth = 1
+        
+        backBtnOutlet.layer.cornerRadius = 15
+        backBtnOutlet.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        backBtnOutlet.layer.borderWidth = 1
+        
+        addPhotosOutlet.layer.cornerRadius = 15
+        addPhotosOutlet.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        addPhotosOutlet.layer.borderWidth = 1
     }
 }

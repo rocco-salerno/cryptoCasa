@@ -13,6 +13,7 @@ import FirebaseAuth
 class WalletIDViewController: UIViewController {
 
     
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var nameText: UITextField!
     @IBOutlet weak var submitOutlet: UIButton!
     
@@ -21,7 +22,8 @@ class WalletIDViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        colorThings()
+        sideMenu()
         let Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))
         view.addGestureRecognizer(Tap)
     }
@@ -64,5 +66,27 @@ class WalletIDViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
         }
     }
+    func colorThings()
+    {
+        nameText.layer.cornerRadius = 15
+        nameText.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        nameText.layer.borderWidth = 1
+        
+        submitOutlet.layer.cornerRadius = 15
+        submitOutlet.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        submitOutlet.layer.borderWidth = 1
+    }
     
+    func sideMenu()
+    {
+        if revealViewController != nil {
+            menuButton.target = revealViewController()
+            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            revealViewController()?.rearViewRevealWidth = 275
+            revealViewController()?.rightViewRevealWidth = 160
+            
+            view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
+            
+        }
+    }
 }

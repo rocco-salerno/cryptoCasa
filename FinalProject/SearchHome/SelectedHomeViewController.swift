@@ -42,6 +42,7 @@ class SelectedHomeViewController: UIViewController {
     var nightsStayed = 0
     var ListArr = [ListModel]()
     var myIndex = 0
+    var privateKey = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,10 +71,31 @@ class SelectedHomeViewController: UIViewController {
     @IBAction func rentThehomeButton(_ sender: UIButton) {
         if WalletArray.isEmpty == true
         {
-            displayAlertMessage(userMessage: "You Need To Add A Wallet!")
+            displayAlertMessage(userMessage: "You need to add a Wallet!")
         }
         else{
-         sendListingIDToSmartContract()
+            let alert = UIAlertController(title: "Submit Funds", message: "Please Enter Your Private Key", preferredStyle: .alert)
+            
+            //2. Add the text field. You can configure it however you need.
+            alert.addTextField { (textField) in
+                textField.text = ""
+            }
+            
+            // 3. Grab the value from the text field, and print it when the user clicks OK.
+            alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { [weak alert] (_) in
+                let textField = alert!.textFields![0] // Force unwrapping because we know it exists.
+                self.privateKey = textField.text!
+                print("This is the private key from alert: \(self.privateKey)")
+                self.sendListingIDToSmartContract()
+                
+                let alert2 = UIAlertController(title: "Success!", message: "Your Rental Was Successful!", preferredStyle: UIAlertControllerStyle.alert)
+                alert2.addAction(UIAlertAction(title:"Proceed", style: .default, handler:  { action in self.performSegue(withIdentifier: "sendingYouBackHome", sender: self)}))
+                print("present it")
+                self.present(alert2, animated: true, completion: nil)
+            }))
+            
+            // 4. Present the alert.
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -166,7 +188,7 @@ class SelectedHomeViewController: UIViewController {
         contractID = ListArr[myIndex].ContractID
        
         // prepare json data
-        let json: NSDictionary = ["WalletID": walletID, "ContractID": contractID, "Price": totalAmount.text!, "PrivateKey": "18F1CB0F03207F6CE9ED3B8D7B8FEDB06C12667CEDF32C1EB8B4D26BC8873F14"]
+        let json: NSDictionary = ["WalletID": walletID, "ContractID": contractID, "Price": totalAmount.text!, "PrivateKey": privateKey]
         
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         
@@ -187,7 +209,7 @@ class SelectedHomeViewController: UIViewController {
             }
             let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
             if let responseJSON = responseJSON as? [String: Any] {
-                print("This is the JSON Respons: ",responseJSON)
+                print("This is the JSON Response: ",responseJSON)
             }
         }
         
@@ -213,7 +235,7 @@ class SelectedHomeViewController: UIViewController {
     func displayAlertMessage(userMessage: String)->Void
     {
         DispatchQueue.main.async {
-            let alertController = UIAlertController(title:"We have a Problem", message: userMessage, preferredStyle: .alert)
+            let alertController = UIAlertController(title:"We Have A Problem", message: userMessage, preferredStyle: .alert)
             
             let OKAction = UIAlertAction(title: "OK", style: .default)
             {
